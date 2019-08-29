@@ -39,6 +39,12 @@ const Layout = ({ children }) => {
           © {new Date().getFullYear()}, Built with
           {` `}
           <a href="https://www.gatsbyjs.org">Gatsby</a>
+          {` `}
+          by Fabian Loewe and Jan Vandenhouten @
+          {` `}
+          <a href="https://th-brandenburg.de">
+            University of Applied Science Brandenburg
+          </a>
         </footer>
       </div>
     </>
