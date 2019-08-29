@@ -1,14 +1,14 @@
 import React from "react"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import Diagram from "../components/venn-diagram"
+import VennDiagram from "../components/venn-diagram"
 
 const langs = ["Deutsch", "English"];
 
 class IndexPage extends React.Component {
   state = {
     numSetsText: "",
-    numSets: 2,
+    numSets: 1,
     lang: langs[0],
   }
 
@@ -21,7 +21,7 @@ class IndexPage extends React.Component {
   handleChange(event) {
     const text = event.target.value;
     const value = Number(text);
-    if (value >= 2) {
+    if (value >= 1) {
       this.setState({
         numSetsText: text,
         numSets: value,
@@ -40,9 +40,9 @@ class IndexPage extends React.Component {
         <SEO title="Venn Diagram" />
         <h1>The Venn diagram tool</h1>
         <p>Disclaimer: The most right element is the first set.</p>
-        <Diagram
-          svgSize={800}
-          numSets={numSets}
+        <VennDiagram
+          containerSize={{ width: 600, height: 600 }}
+          setsCount={numSets}
         />
         <input
           type="text"
