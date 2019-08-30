@@ -13,12 +13,8 @@ const UnselectableText = styled.text`
 `;
 
 // Based on https://stackoverflow.com/questions/5737975/circle-drawing-with-svgs-arc-path/10477334#10477334
-/*
 export const circlePath = (cx, cy, r) =>
   `M ${cx} ${cy} m -${r}, 0 a ${r},${r} 0 1,0 ${r * 2},0 a ${r},${r} 0 1,0 -${r * 2},0`
-*/
-export const circlePath = (cx, cy, r) =>
-  `M ${cx} ${cy} m -${r}, 0 a ${r * 2},${r} 0 1,0 ${r * 4},0 a ${r * 2},${r} 0 1,0 -${r * 4},0`
 
 const linePath = line()
   .x(d => d.x)

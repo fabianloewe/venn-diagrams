@@ -1,18 +1,20 @@
 {
-  "name": "gatsby-starter-default",
+  "name": "venn-diagrams",
   "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
+  "description": "This tool visualizes set operations",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "Fabian Loewe <fabianl@th-brandenburg.de>, Jan Vandenhouten <vandenho@th-brandenburg.de>",
   "dependencies": {
     "@vx/group": "^0.0.189",
     "@vx/shape": "^0.0.189",
+    "babel-plugin-styled-components": "^1.10.6",
     "gatsby": "^2.13.20",
     "gatsby-image": "^2.2.6",
-    "gatsby-plugin-manifest": "^2.2.3",
+    "gatsby-plugin-manifest": "^2.2.10",
     "gatsby-plugin-offline": "^2.2.4",
     "gatsby-plugin-react-helmet": "^3.1.2",
     "gatsby-plugin-sharp": "^2.2.7",
+    "gatsby-plugin-styled-components": "^3.1.3",
     "gatsby-source-filesystem": "^2.1.5",
     "gatsby-transformer-sharp": "^2.2.3",
     "prop-types": "^15.7.2",
@@ -22,9 +24,12 @@
     "styled-components": "^4.3.2"
   },
   "devDependencies": {
+    "nativefier": "^7.7.0",
     "prettier": "^1.18.2"
   },
   "keywords": [
+    "venn-diagrams",
+    "venn",
     "gatsby"
   ],
   "license": "MIT",
@@ -34,13 +39,14 @@
     "format": "prettier --write src/**/*.{js,jsx}",
     "start": "npm run develop",
     "serve": "gatsby serve",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\"",
+    "desktop": "nativefier -n venn-diagrams --maximize \"http://localhost:9000\" build-desktop"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-default"
+    "url": "https://github.com/hyronx/venn-diagrams.git"
   },
   "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+    "url": "https://github.com/hyronx/venn-diagrams/issues"
   }
 }
