@@ -19,6 +19,7 @@ export const OneSetDiagram = ({
         fill={selected.includes(1) ? color : "transparent"}
         number={1}
         onClick={event => onClick({ number: 1, event })}
+        isSelected={selected.includes(1)}
       />
     )],
     [2, (
@@ -36,6 +37,7 @@ export const OneSetDiagram = ({
         fill={selected.includes(2) ? color : "transparent"}
         number={2}
         onClick={event => onClick({ number: 2, event })}
+        isSelected={selected.includes(2)}
       />
     )]
   ]
