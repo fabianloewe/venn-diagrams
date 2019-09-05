@@ -1,7 +1,8 @@
 import React, { useState, useRef, useEffect } from "react";
 import PropTypes from "prop-types";
-import { OneSetDiagram } from "./one-set"
-import { TwoSetsDiagram } from "./two-sets"
+import OneSetDiagram from "./one-set"
+import TwoSetsDiagram from "./two-sets"
+import ThreeSetsDiagram from "./three-sets"
 
 const VennDiagram = ({ containerSize, setsCount }) => {
   const radius = (
@@ -30,6 +31,20 @@ const VennDiagram = ({ containerSize, setsCount }) => {
         )}
         {setsCount === 2 && (
           <TwoSetsDiagram
+            containerSize={containerSize}
+            radius={radius}
+            selected={selectedElemSets}
+            onClick={({ number }) => {
+              if (selectedElemSets.includes(number)) {
+                setSelectedElemSets(selectedElemSets.filter(e => e !== number))
+              } else {
+                setSelectedElemSets([...selectedElemSets, number])
+              }
+            }}
+          />
+        )}
+        {setsCount === 3 && (
+          <ThreeSetsDiagram
             containerSize={containerSize}
             radius={radius}
             selected={selectedElemSets}

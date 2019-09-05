@@ -44,9 +44,12 @@ class IndexPage extends React.Component {
           containerSize={{ width: 600, height: 600 }}
           setsCount={numSets}
         />
+        <label htmlFor="num-sets">Number of sets: </label>
         <input
-          type="text"
-          placeholder="Number of sets"
+          type="number"
+          id="num-sets"
+          min="1"
+          max="4"
           value={numSetsText}
           onChange={this.handleChange}
         />
