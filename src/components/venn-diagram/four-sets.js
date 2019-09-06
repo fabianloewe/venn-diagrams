@@ -7,7 +7,7 @@ import intersection from "../../utils/intersection";
 
 const getElementalSet = (n, func) => [n, func(n)]
 
-export const ThreeSetsDiagram = ({
+export const FourSetsDiagram = ({
   containerSize,
   radius,
   color = "black",
@@ -17,27 +17,9 @@ export const ThreeSetsDiagram = ({
   const svgSize = containerSize.width < containerSize.height
     ? containerSize.width
     : containerSize.height;
-  const circles = getPoints({
-    sides: 3,
-    size: svgSize / 6,
-    center: {
-      x: svgSize / 2,
-      y: svgSize / 2,
-    },
-    rotate: 0,
-  });
-
-  const intersect12 = intersection(
-    circles[0].x, circles[0].y, radius, circles[1].x, circles[1].y, radius
-  );
-  const intersect23 = intersection(
-    circles[1].x, circles[1].y, radius, circles[2].x, circles[2].y, radius
-  );
-  const intersect13 = intersection(
-    circles[0].x, circles[0].y, radius, circles[2].x, circles[2].y, radius
-  );
 
   const elementalSets = [
+    /*
     getElementalSet(1, number => (
       <g>
         <path
@@ -260,6 +242,27 @@ export const ThreeSetsDiagram = ({
         </UnselectableText>
       </g>
     )),
+    */
+    [20, (
+      <g transform="rotate(40)">
+        <ellipse cx={svgSize / 2 + 95} cy={svgSize / 2 - 80} rx={radius} ry={radius / 2} stroke="black" strokeWidth="2" fill="none" />
+      </g>
+    )],
+    [21, (
+      <g transform="rotate(40)">
+        <ellipse cx={svgSize / 2 + 100} cy={svgSize / 2 - 140} rx={radius} ry={radius / 2} stroke="black" strokeWidth="2" fill="none" />
+      </g>
+    )],
+    [22, (
+      <g transform="rotate(-40)">
+        <ellipse cx={svgSize / 2 - 330} cy={svgSize / 2 + 180} rx={radius} ry={radius / 2} stroke="black" strokeWidth="2" fill="none" />
+      </g>
+    )],
+    [23, (
+      <g transform="rotate(-40)">
+        <ellipse cx={svgSize / 2 - 325} cy={svgSize / 2 + 230} rx={radius} ry={radius / 2} stroke="black" strokeWidth="2" fill="none" />
+      </g>
+    )]
   ]
 
   return (
@@ -269,7 +272,7 @@ export const ThreeSetsDiagram = ({
   )
 }
 
-ThreeSetsDiagram.propTypes = {
+FourSetsDiagram.propTypes = {
   containerSize: PropTypes.shape({
     height: PropTypes.number.isRequired,
     width: PropTypes.number.isRequired,
@@ -280,4 +283,4 @@ ThreeSetsDiagram.propTypes = {
   onClick: PropTypes.func,
 }
 
-export default ThreeSetsDiagram
+export default FourSetsDiagram
