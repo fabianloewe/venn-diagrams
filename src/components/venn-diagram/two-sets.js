@@ -39,14 +39,13 @@ export const TwoSetsDiagram = ({
             `M${intersect[0]},${intersect[2]} ` +
             `A${radius},${radius} 0 1,1 ` +
             `${intersect[1]},${intersect[3]} ` +
-            `M${intersect[0]},${intersect[2]} ` +
-            `A${radius},${radius} 0 0,1 ` +
-            `${intersect[1]},${intersect[3]}`
+            `A${radius},${radius} 0 0,0 ` +
+            `${intersect[0]},${intersect[2]} Z`
           }
           fill={selected.includes(number) ? color : "transparent"}
-          fillRule="evenodd"
+          //fillRule="evenodd"
           stroke="black"
-          strokeWidth="2"
+          strokeWidth="2px"
           onClick={event => onClick({ number, event })}
         />
         <UnselectableText
@@ -62,14 +61,13 @@ export const TwoSetsDiagram = ({
         <path
           d={
             `M${intersect[0]},${intersect[2]} ` +
-            `A${radius},${radius} 0 0,0 ` +
-            `${intersect[1]},${intersect[3]} ` +
-            `M${intersect[0]},${intersect[2]} ` +
             `A${radius},${radius} 0 1,0 ` +
-            `${intersect[1]},${intersect[3]}`
+            `${intersect[1]},${intersect[3]} ` +
+            `A${radius},${radius} 0 0,1 ` +
+            `${intersect[0]},${intersect[2]} Z`
           }
           fill={selected.includes(number) ? color : "transparent"}
-          fillRule="evenodd"
+          //fillRule="evenodd"
           stroke="black"
           strokeWidth="2"
           onClick={event => onClick({ number, event })}
@@ -89,9 +87,8 @@ export const TwoSetsDiagram = ({
             `M${intersect[0]},${intersect[2]} ` +
             `A${radius},${radius} 0 0,0 ` +
             `${intersect[1]},${intersect[3]}` +
-            `M${intersect[0]},${intersect[2]} ` +
-            `A${radius},${radius} 0 0,1 ` +
-            `${intersect[1]},${intersect[3]}`
+            `A${radius},${radius} 0 0,0 ` +
+            `${intersect[0]},${intersect[2]} Z`
           }
           fill={selected.includes(number) ? color : "transparent"}
           stroke="black"
@@ -114,14 +111,13 @@ export const TwoSetsDiagram = ({
             `M${intersect[0]},${intersect[2]} ` +
             `A${radius},${radius} 0 1,1 ` +
             `${intersect[1]},${intersect[3]} ` +
-            `M${intersect[0]},${intersect[2]} ` +
-            `A${radius},${radius} 0 1,0 ` +
-            `${intersect[1]},${intersect[3]} ` +
+            `A${radius},${radius} 0 1,1 ` +
+            `${intersect[0]},${intersect[2]} Z ` +
             `M10,10 ` +
             `L${10 + containerSize.width - 20},10 ` +
             `L${10 + containerSize.width - 20},${10 + containerSize.height - 20} ` +
             `L10,${10 + containerSize.width - 20} ` +
-            `L10,10`
+            `L10,10 Z`
 
           }
           fill={selected.includes(number) ? color : "transparent"}
