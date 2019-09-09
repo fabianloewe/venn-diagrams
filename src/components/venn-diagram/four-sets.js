@@ -1,9 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Group } from "@vx/group";
-import { getPoints } from "@vx/shape";
+import { getPoints, Line } from "@vx/shape";
 import { UnselectableText, RevertedCirclePath } from "./circle-path";
 import intersection from "../../utils/intersection";
+import Raster from "../raster";
 
 const getElementalSet = (n, func) => [n, func(n)]
 
@@ -245,29 +246,32 @@ export const FourSetsDiagram = ({
     */
     [20, (
       <g transform="rotate(40)">
-        <ellipse cx={svgSize / 2 + 95} cy={svgSize / 2 - 80} rx={radius} ry={radius / 2} stroke="black" strokeWidth="2" fill="none" />
+        <ellipse cx={svgSize / 2 + 110} cy={svgSize / 2 - 190} rx={radius} ry={radius / 2} stroke="black" strokeWidth="2" fill="none" />
       </g>
     )],
     [21, (
       <g transform="rotate(40)">
-        <ellipse cx={svgSize / 2 + 100} cy={svgSize / 2 - 140} rx={radius} ry={radius / 2} stroke="black" strokeWidth="2" fill="none" />
+        <ellipse cx={svgSize / 2 + 110} cy={svgSize / 2 - 140} rx={radius} ry={radius / 2} stroke="black" strokeWidth="2" fill="none" />
       </g>
     )],
     [22, (
       <g transform="rotate(-40)">
-        <ellipse cx={svgSize / 2 - 330} cy={svgSize / 2 + 180} rx={radius} ry={radius / 2} stroke="black" strokeWidth="2" fill="none" />
+        <ellipse cx={svgSize / 2 - 260} cy={svgSize / 2 + 190} rx={radius} ry={radius / 2} stroke="black" strokeWidth="2" fill="none" />
       </g>
     )],
     [23, (
       <g transform="rotate(-40)">
-        <ellipse cx={svgSize / 2 - 325} cy={svgSize / 2 + 230} rx={radius} ry={radius / 2} stroke="black" strokeWidth="2" fill="none" />
+        <ellipse cx={svgSize / 2 - 260} cy={svgSize / 2 + 240} rx={radius} ry={radius / 2} stroke="black" strokeWidth="2" fill="none" />
       </g>
     )]
   ]
 
   return (
-    <Group className="venn-diagram-sets">
-      {elementalSets.map(([_, path]) => path)}
+    <Group className="venn-diagram-four-sets">
+      <Group className="venn-diagram-sets">
+        {elementalSets.map(([_, path]) => path)}
+      </Group>
+      <Raster {...containerSize} />
     </Group>
   )
 }
