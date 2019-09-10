@@ -20,18 +20,14 @@ export const FourSetsDiagram = ({
     : containerSize.height;
 
   const elementalSets = [
-    /*
     getElementalSet(1, number => (
       <g>
         <path
           d={
-            `M${intersect13[0]},${intersect13[2]} ` +
-            `A${radius},${radius} 0 1,1 ` +
-            `${intersect12[1]},${intersect12[3]} ` +
-            `A${radius},${radius} 0 0,0 ` +
-            `${intersect23[0]},${intersect23[2]} ` +
-            `A${radius},${radius} 0 0,0 ` +
-            `${intersect13[0]},${intersect13[2]} Z`
+            `M500,250 ` +
+            `A${radius},${radius / 2} -40 0,0 300,275 ` +
+            `A${radius},${radius / 2} -40 0,1 350,300 ` +
+            `A${radius},${radius / 2} -40 0,1 500,250 Z`
           }
           fill={selected.includes(number) ? color : "transparent"}
           stroke="black"
@@ -39,9 +35,10 @@ export const FourSetsDiagram = ({
           onClick={event => onClick({ number, event })}
         />
         <UnselectableText
-          x={intersect23[0] + radius / 2}
-          y={intersect23[2]}
+          x={400}
+          y={240}
           fill={selected.includes(number) ? "white" : color}
+          onClick={event => onClick({ number, event })}
         >
          {number}
         </UnselectableText>
@@ -51,13 +48,11 @@ export const FourSetsDiagram = ({
       <g>
         <path
           d={
-            `M${intersect12[1]},${intersect12[3]} ` +
-            `A${radius},${radius} 0 1,1 ` +
-            `${intersect23[1]},${intersect23[3]} ` +
-            `A${radius},${radius} 0 0,0 ` +
-            `${intersect13[1]},${intersect13[3]} ` +
-            `A${radius},${radius} 0 0,0 ` +
-            `${intersect12[1]},${intersect12[3]} Z`
+            `M500,250 ` +
+            `A${radius},${radius / 2} -40 0,1 300,525 ` +
+            `A${radius},${radius / 2} 40 0,0 350,475 ` +
+            `A${radius},${radius / 2} 40 0,0 400,425 ` +
+            `A${radius},${radius / 2} -40 0,0 500,250 Z`
           }
           fill={selected.includes(number) ? color : "transparent"}
           stroke="black"
@@ -65,9 +60,10 @@ export const FourSetsDiagram = ({
           onClick={event => onClick({ number, event })}
         />
         <UnselectableText
-          x={intersect13[1] - radius / 2}
-          y={intersect13[3] + radius / 2}
+          x={520}
+          y={300}
           fill={selected.includes(number) ? "white" : color}
+          onClick={event => onClick({ number, event })}
         >
          {number}
         </UnselectableText>
@@ -77,13 +73,11 @@ export const FourSetsDiagram = ({
       <g>
         <path
           d={
-            `M${intersect23[1]},${intersect23[3]} ` +
-            `A${radius},${radius} 0 1,1 ` +
-            `${intersect13[0]},${intersect13[2]} ` +
-            `A${radius},${radius} 0 0,0 ` +
-            `${intersect12[0]},${intersect12[2]} ` +
-            `A${radius},${radius} 0 0,0 ` +
-            `${intersect23[1]},${intersect23[3]} Z`
+            `M100,250 ` +
+            `A${radius},${radius / 2} 40 1,0 300,525 ` +
+            `A${radius},${radius / 2} -40 0,1 250,475 ` +
+            `A${radius},${radius / 2} -40 0,1 200,425 ` +
+            `A${radius},${radius / 2} 40 0,1 100,250 Z`
           }
           fill={selected.includes(number) ? color : "transparent"}
           stroke="black"
@@ -91,9 +85,10 @@ export const FourSetsDiagram = ({
           onClick={event => onClick({ number, event })}
         />
         <UnselectableText
-          x={intersect12[0] - radius / 2}
-          y={intersect12[2] - radius / 2}
+          x={70}
+          y={300}
           fill={selected.includes(number) ? "white" : color}
+          onClick={event => onClick({ number, event })}
         >
          {number}
         </UnselectableText>
@@ -103,13 +98,10 @@ export const FourSetsDiagram = ({
       <g>
         <path
           d={
-            `M${intersect13[0]},${intersect13[2]} ` +
-            `A${radius},${radius} 0 0,1 ` +
-            `${intersect23[0]},${intersect23[2]} ` +
-            `A${radius},${radius} 0 0,0 ` +
-            `${intersect12[0]},${intersect12[2]} ` +
-            `A${radius},${radius} 0 0,1 ` +
-            `${intersect13[0]},${intersect13[2]} Z`
+            `M100,250 ` +
+            `A${radius},${radius / 2} 40 0,1 300,275 ` +
+            `A${radius},${radius / 2} 40 0,0 250,300 ` +
+            `A${radius},${radius / 2} 40 0,0 100,250 Z`
           }
           fill={selected.includes(number) ? color : "transparent"}
           stroke="black"
@@ -117,9 +109,10 @@ export const FourSetsDiagram = ({
           onClick={event => onClick({ number, event })}
         />
         <UnselectableText
-          x={intersect13[0] - radius / 4}
-          y={intersect13[2] + radius / 4}
+          x={170}
+          y={240}
           fill={selected.includes(number) ? "white" : color}
+          onClick={event => onClick({ number, event })}
         >
          {number}
         </UnselectableText>
@@ -129,13 +122,11 @@ export const FourSetsDiagram = ({
       <g>
         <path
           d={
-            `M${intersect12[1]},${intersect12[3]} ` +
-            `A${radius},${radius} 0 0,1 ` +
-            `${intersect13[1]},${intersect13[3]} ` +
-            `A${radius},${radius} 0 0,0 ` +
-            `${intersect23[0]},${intersect23[2]} ` +
-            `A${radius},${radius} 0 0,1 ` +
-            `${intersect12[1]},${intersect12[3]} Z`
+            `M300,275 ` +
+            `A${radius},${radius / 2} 40 0,0 250,300 ` +
+            `A${radius},${radius / 2} 40 0,1 300,350 ` +
+            `A${radius},${radius / 2} -40 0,1 350,300 ` +
+            `A${radius},${radius / 2} -40 0,0 300,275 Z`
           }
           fill={selected.includes(number) ? color : "transparent"}
           stroke="black"
@@ -143,9 +134,10 @@ export const FourSetsDiagram = ({
           onClick={event => onClick({ number, event })}
         />
         <UnselectableText
-          x={intersect12[1] - radius / 4}
-          y={intersect12[3] - radius / 4}
+          x={295}
+          y={310}
           fill={selected.includes(number) ? "white" : color}
+          onClick={event => onClick({ number, event })}
         >
          {number}
         </UnselectableText>
@@ -155,13 +147,10 @@ export const FourSetsDiagram = ({
       <g>
         <path
           d={
-            `M${intersect23[1]},${intersect23[3]} ` +
-            `A${radius},${radius} 0 0,1 ` +
-            `${intersect12[0]},${intersect12[2]} ` +
-            `A${radius},${radius} 0 0,0 ` +
-            `${intersect13[1]},${intersect13[3]} ` +
-            `A${radius},${radius} 0 0,1 ` +
-            `${intersect23[1]},${intersect23[3]} Z`
+            `M500,250 ` +
+            `A${radius},${radius / 2} -40 0,1 400,425 ` +
+            `A${radius},${radius / 2} 40 0,0 350,300 ` +
+            `A${radius},${radius / 2} -40 0,1 500,250 Z`
           }
           fill={selected.includes(number) ? color : "transparent"}
           stroke="black"
@@ -169,9 +158,10 @@ export const FourSetsDiagram = ({
           onClick={event => onClick({ number, event })}
         />
         <UnselectableText
-          x={intersect23[1] + radius / 4}
-          y={intersect23[3]}
+          x={420}
+          y={330}
           fill={selected.includes(number) ? "white" : color}
+          onClick={event => onClick({ number, event })}
         >
          {number}
         </UnselectableText>
@@ -181,13 +171,10 @@ export const FourSetsDiagram = ({
       <g>
         <path
           d={
-            `M${intersect23[0]},${intersect23[2]} ` +
-            `A${radius},${radius} 0 0,1 ` +
-            `${intersect13[1]},${intersect13[3]} ` +
-            `A${radius},${radius} 0 0,1 ` +
-            `${intersect12[0]},${intersect12[2]} ` +
-            `A${radius},${radius} 0 0,1 ` +
-            `${intersect23[0]},${intersect23[2]} Z`
+            `M350,475 ` +
+            `A${radius},${radius / 2} 40 0,0 400,425 ` +
+            `A${radius},${radius / 2} 40 0,1 350,450 ` +
+            `A${radius},${radius / 2} -40 0,1 350,475 Z`
           }
           fill={selected.includes(number) ? color : "transparent"}
           stroke="black"
@@ -195,9 +182,10 @@ export const FourSetsDiagram = ({
           onClick={event => onClick({ number, event })}
         />
         <UnselectableText
-          x={intersect23[0] - radius / 2}
-          y={intersect23[2]}
+          x={355}
+          y={470}
           fill={selected.includes(number) ? "white" : color}
+          onClick={event => onClick({ number, event })}
         >
          {number}
         </UnselectableText>
@@ -207,20 +195,207 @@ export const FourSetsDiagram = ({
       <g>
         <path
           d={
-            // Outer circles
-            `M${intersect13[0]},${intersect13[2]} ` +
-            `A${radius},${radius} 0 1,1 ` +
-            `${intersect12[1]},${intersect12[3]} ` +
-            `A${radius},${radius} 0 1,1 ` +
-            `${intersect23[0]},${intersect23[2]} ` +
-            `A${radius},${radius} 0 1,1 ` +
-            `${intersect13[0]},${intersect13[2]} Z ` +
-            // The "eye"; needed to mask a overlapping part
-            `M${intersect23[0]},${intersect23[2]} ` +
-            `A${radius},${radius} 0 0,0 ` +
-            `${intersect23[1]},${intersect23[3]} ` +
-            `A${radius},${radius} 0 0,0 ` +
-            `${intersect23[0]},${intersect23[2]} Z ` +
+            `M300,475 ` +
+            `A${radius},${radius / 2} 40 0,1 250,475 ` +
+            `A${radius},${radius / 2} -40 0,0 300,525 ` +
+            `A${radius},${radius / 2} 40 0,0 350,475 ` +
+            `A${radius},${radius / 2} 40 0,1 300,475 Z`
+          }
+          fill={selected.includes(number) ? color : "transparent"}
+          stroke="black"
+          strokeWidth="2px"
+          onClick={event => onClick({ number, event })}
+        />
+        <UnselectableText
+          x={295}
+          y={510}
+          fill={selected.includes(number) ? "white" : color}
+          onClick={event => onClick({ number, event })}
+        >
+         {number}
+        </UnselectableText>
+      </g>
+    )),
+    getElementalSet(9, number => (
+      <g>
+        <path
+          d={
+            `M250,475 ` +
+            `A${radius},${radius / 2} -40 0,1 200,425 ` +
+            `A${radius},${radius / 2} -40 0,0 250,450 ` +
+            `A${radius},${radius / 2} 40 0,1 250,475 Z`
+          }
+          fill={selected.includes(number) ? color : "transparent"}
+          stroke="black"
+          strokeWidth="2px"
+          onClick={event => onClick({ number, event })}
+        />
+        <UnselectableText
+          x={220}
+          y={465}
+          fill={selected.includes(number) ? "white" : color}
+          onClick={event => onClick({ number, event })}
+        >
+         {number}
+        </UnselectableText>
+      </g>
+    )),
+    getElementalSet(10, number => (
+      <g>
+        <path
+          d={
+            `M100,250 ` +
+            `A${radius},${radius / 2} 40 0,0 200,425 ` +
+            `A${radius},${radius / 2} -40 0,1 250,300 ` +
+            `A${radius},${radius / 2} 40 0,0 100,250 Z`
+          }
+          fill={selected.includes(number) ? color : "transparent"}
+          stroke="black"
+          strokeWidth="2px"
+          onClick={event => onClick({ number, event })}
+        />
+        <UnselectableText
+          x={170}
+          y={330}
+          fill={selected.includes(number) ? "white" : color}
+          onClick={event => onClick({ number, event })}
+        >
+         {number}
+        </UnselectableText>
+      </g>
+    )),
+    getElementalSet(11, number => (
+      <g>
+        <path
+          d={
+            `M350,450 ` +
+            `A${radius},${radius / 2} 40 0,0 400,425 ` +
+            `A${radius},${radius / 2} 40 0,0 350,300 ` +
+            `A${radius},${radius / 2} -40 0,0 300,350 ` +
+            `A${radius},${radius / 2} 40 0,1 350,450 Z`
+          }
+          fill={selected.includes(number) ? color : "transparent"}
+          stroke="black"
+          strokeWidth="2px"
+          onClick={event => onClick({ number, event })}
+        />
+        <UnselectableText
+          x={350}
+          y={400}
+          fill={selected.includes(number) ? "white" : color}
+          onClick={event => onClick({ number, event })}
+        >
+         {number}
+        </UnselectableText>
+      </g>
+    )),
+    getElementalSet(12, number => (
+      <g>
+        <path
+          d={
+            `M350,475 ` +
+            `A${radius},${radius / 2} 40 0,0 350,450 ` +
+            `A${radius},${radius / 2} 40 0,1 300,475 ` +
+            `A${radius},${radius / 2} 40 0,0 350,475 Z`
+          }
+          fill={selected.includes(number) ? color : "transparent"}
+          stroke="black"
+          strokeWidth="2px"
+          onClick={event => onClick({ number, event })}
+        />
+        <UnselectableText
+          x={330}
+          y={475}
+          fill={selected.includes(number) ? "white" : color}
+          onClick={event => onClick({ number, event })}
+        >
+         {number}
+        </UnselectableText>
+      </g>
+    )),
+    getElementalSet(13, number => (
+      <g>
+        <path
+          d={
+            `M250,475 ` +
+            `A${radius},${radius / 2} -40 0,0 250,450 ` +
+            `A${radius},${radius / 2} -40 0,0 300,475 ` +
+            `A${radius},${radius / 2} -40 0,1 250,475 Z`
+          }
+          fill={selected.includes(number) ? color : "transparent"}
+          stroke="black"
+          strokeWidth="2px"
+          onClick={event => onClick({ number, event })}
+        />
+        <UnselectableText
+          x={250}
+          y={475}
+          fill={selected.includes(number) ? "white" : color}
+          onClick={event => onClick({ number, event })}
+        >
+         {number}
+        </UnselectableText>
+      </g>
+    )),
+    getElementalSet(14, number => (
+      <g>
+        <path
+          d={
+            `M250,450 ` +
+            `A${radius},${radius / 2} -40 0,1 200,425 ` +
+            `A${radius},${radius / 2} -40 0,1 250,300 ` +
+            `A${radius},${radius / 2} 40 0,1 300,350 ` +
+            `A${radius},${radius / 2} -40 0,0 250,450 Z`
+          }
+          fill={selected.includes(number) ? color : "transparent"}
+          stroke="black"
+          strokeWidth="2px"
+          onClick={event => onClick({ number, event })}
+        />
+        <UnselectableText
+          x={225}
+          y={400}
+          fill={selected.includes(number) ? "white" : color}
+          onClick={event => onClick({ number, event })}
+        >
+         {number}
+        </UnselectableText>
+      </g>
+    )),
+    getElementalSet(15, number => (
+      <g>
+        <path
+          d={
+            `M300,350 ` +
+            `A${radius},${radius / 2} -40 0,0 250,450 ` +
+            `A${radius},${radius / 2} -40 0,0 300,475 ` +
+            `A${radius},${radius / 2} 40 0,0 350,450 ` +
+            `A${radius},${radius / 2} 40 0,0 300,350 Z`
+          }
+          fill={selected.includes(number) ? color : "transparent"}
+          stroke="black"
+          strokeWidth="2px"
+          onClick={event => onClick({ number, event })}
+        />
+        <UnselectableText
+          x={290}
+          y={400}
+          fill={selected.includes(number) ? "white" : color}
+          onClick={event => onClick({ number, event })}
+        >
+         {number}
+        </UnselectableText>
+      </g>
+    )),
+    getElementalSet(16, number => (
+      <g>
+        <path
+          d={
+            `M100,250 ` +
+            `A${radius},${radius / 2} 40 0,1 300,275 ` +
+            `A${radius},${radius / 2} -40 0,1 500,250 ` +
+            `A${radius},${radius / 2} -40 1,1 300,525 ` +
+            `A${radius},${radius / 2} 40 1,1 100,250 Z` +
             // Rectangle
             `M10,10 ` +
             `L${10 + containerSize.width - 20},10 ` +
@@ -238,12 +413,13 @@ export const FourSetsDiagram = ({
           x={30}
           y={30}
           fill={selected.includes(number) ? "white" : color}
+          onClick={event => onClick({ number, event })}
         >
          {number}
         </UnselectableText>
       </g>
     )),
-    */
+    /*
     [20, (
       <g transform="rotate(40)">
         <ellipse cx={svgSize / 2 + 110} cy={svgSize / 2 - 190} rx={radius} ry={radius / 2} stroke="black" strokeWidth="2" fill="none" />
@@ -264,6 +440,7 @@ export const FourSetsDiagram = ({
         <ellipse cx={svgSize / 2 - 260} cy={svgSize / 2 + 240} rx={radius} ry={radius / 2} stroke="black" strokeWidth="2" fill="none" />
       </g>
     )]
+    */
   ]
 
   return (
@@ -271,7 +448,7 @@ export const FourSetsDiagram = ({
       <Group className="venn-diagram-sets">
         {elementalSets.map(([_, path]) => path)}
       </Group>
-      <Raster {...containerSize} />
+      {/*<Raster {...containerSize} />*/}
     </Group>
   )
 }
