@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Group } from "@vx/group";
 import { getPoints } from "@vx/shape";
-import { CircleIntersectionPath, RevertedCirclePath } from "./circle-path";
+import { ElementalSet, RevertedCirclePath } from "./circle-path";
 
 export const TwoSetsDiagram = ({
   containerSize,
@@ -25,10 +25,12 @@ export const TwoSetsDiagram = ({
   });
   const elementalSets = [
     [1, (
-      <CircleIntersectionPath
-        points={circles}
-        r={radius}
-        fill={selected.includes(1) ? color : "transparent"}
+      <ElementalSet
+        rightCircle={{ cx: circles[1].x, cy: circles[1].y, r: radius }}
+        leftCircle={{ cx: circles[1].x, cy: circles[1].y, r: radius }}
+        color={selected.includes(1) ? color : "transparent"}
+        stroke="black"
+        strokeWidth="2"
         number={1}
         onClick={event => onClick({ number: 1, event })}
       />
