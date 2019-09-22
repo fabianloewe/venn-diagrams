@@ -2,7 +2,10 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Group } from "@vx/group";
 import { getPoints } from "@vx/shape";
-import { ElementalSet, RevertedCirclePath } from "./circle-path";
+import { UnselectableText, RevertedCirclePath } from "./circle-path";
+import intersection from "../../utils/intersection";
+
+const getElementalSet = (n, func) => [n, func(n)]
 
 export const TwoSetsDiagram = ({
   containerSize,
@@ -16,42 +19,122 @@ export const TwoSetsDiagram = ({
     : containerSize.height;
   const circles = getPoints({
     sides: 2,
-    size: svgSize / 5,
+    size: svgSize / 6,
     center: {
       x: svgSize / 2,
       y: svgSize / 2,
     },
     rotate: 0,
   });
+
+  const intersect = intersection(
+    circles[0].x, circles[0].y, radius, circles[1].x, circles[1].y, radius
+  );
+
   const elementalSets = [
-    [1, (
-      <ElementalSet
-        rightCircle={{ cx: circles[1].x, cy: circles[1].y, r: radius }}
-        leftCircle={{ cx: circles[1].x, cy: circles[1].y, r: radius }}
-        color={selected.includes(1) ? color : "transparent"}
-        stroke="black"
-        strokeWidth="2"
-        number={1}
-        onClick={event => onClick({ number: 1, event })}
-      />
-    )],
-    [2, (
-      <RevertedCirclePath
-        cx={containerSize.height / 2}
-        cy={containerSize.width / 2}
-        r={radius}
-        rectPoints={[
-          { x: 10, y: 10 },
-          { x: 10 + containerSize.width - 20, y: 10 },
-          { x: 10 + containerSize.width - 20, y: 10 + containerSize.height - 20},
-          { x: 10, y: 10 + containerSize.width - 20},
-          { x: 10, y: 10 },
-        ]}
-        fill={selected.includes(2) ? color : "transparent"}
-        number={2}
-        onClick={event => onClick({ number: 2, event })}
-      />
-    )]
+    getElementalSet(1, number => (
+      <g>
+        <path
+          d={
+            `M${intersect[0]},${intersect[2]} ` +
+            `A${radius},${radius} 0 1,1 ` +
+            `${intersect[1]},${intersect[3]} ` +
+            `A${radius},${radius} 0 0,0 ` +
+            `${intersect[0]},${intersect[2]} Z`
+          }
+          fill={selected.includes(number) ? color : "transparent"}
+          //fillRule="evenodd"
+          stroke="black"
+          strokeWidth="2px"
+          onClick={event => onClick({ number, event })}
+        />
+        <UnselectableText
+          {...circles[0]}
+          fill={selected.includes(number) ? "white" : color}
+        >
+         {number}
+        </UnselectableText>
+      </g>
+    )),
+    getElementalSet(2, number => (
+      <g>
+        <path
+          d={
+            `M${intersect[0]},${intersect[2]} ` +
+            `A${radius},${radius} 0 1,0 ` +
+            `${intersect[1]},${intersect[3]} ` +
+            `A${radius},${radius} 0 0,1 ` +
+            `${intersect[0]},${intersect[2]} Z`
+          }
+          fill={selected.includes(number) ? color : "transparent"}
+          //fillRule="evenodd"
+          stroke="black"
+          strokeWidth="2"
+          onClick={event => onClick({ number, event })}
+        />
+        <UnselectableText
+          {...circles[1]}
+          fill={selected.includes(number) ? "white" : color}
+        >
+         {number}
+        </UnselectableText>
+      </g>
+    )),
+    getElementalSet(3, number => (
+      <g>
+        <path
+          d={
+            `M${intersect[0]},${intersect[2]} ` +
+            `A${radius},${radius} 0 0,0 ` +
+            `${intersect[1]},${intersect[3]}` +
+            `A${radius},${radius} 0 0,0 ` +
+            `${intersect[0]},${intersect[2]} Z`
+          }
+          fill={selected.includes(number) ? color : "transparent"}
+          stroke="black"
+          strokeWidth="2"
+          onClick={event => onClick({ number, event })}
+        />
+        <UnselectableText
+          x={intersect[0]}
+          y={intersect[2] + (intersect[3] - intersect[2]) / 2}
+          fill={selected.includes(number) ? "white" : color}
+        >
+         {number}
+        </UnselectableText>
+      </g>
+    )),
+    getElementalSet(4, number => (
+      <g>
+        <path
+          d={
+            `M${intersect[0]},${intersect[2]} ` +
+            `A${radius},${radius} 0 1,1 ` +
+            `${intersect[1]},${intersect[3]} ` +
+            `A${radius},${radius} 0 1,1 ` +
+            `${intersect[0]},${intersect[2]} Z ` +
+            `M10,10 ` +
+            `L${10 + containerSize.width - 20},10 ` +
+            `L${10 + containerSize.width - 20},${10 + containerSize.height - 20} ` +
+            `L10,${10 + containerSize.width - 20} ` +
+            `L10,10 Z`
+
+          }
+          fill={selected.includes(number) ? color : "transparent"}
+          fillRule="evenodd"
+          stroke="black"
+          strokeWidth="2"
+          onClick={event => onClick({ number, event })}
+        />
+        <UnselectableText
+          x={30}
+          y={30}
+          fill={selected.includes(number) ? "white" : color}
+        >
+         {number}
+        </UnselectableText>
+      </g>
+    )),
   ]
 
   return (

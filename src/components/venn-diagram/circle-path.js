@@ -1,36 +1,48 @@
-import React, { useState, useRef, useEffect } from "react"
-import PropTypes from "prop-types"
-import { Group } from "@vx/group"
-import { arc, line, lineRadial } from "d3-shape"
-import styled from "styled-components"
-import intersection from "../../utils/intersection"
+import React, { useState, useRef, useEffect } from "react";
+import PropTypes from "prop-types";
+import { Group } from "@vx/group";
+import { arc, line, curveCatmullRom } from "d3-shape";
+import styled from "styled-components";
+import intersection from "../../utils/intersection";
 
-const UnselectableText = styled.text`
+export const UnselectableText = styled.text`
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-`
+`;
 
 // Based on https://stackoverflow.com/questions/5737975/circle-drawing-with-svgs-arc-path/10477334#10477334
 export const circlePath = (cx, cy, r) =>
-  `M ${cx} ${cy} m -${r}, 0 a ${r},${r} 0 1,0 ${r *
-    2},0 a ${r},${r} 0 1,0 -${r * 2},0`
+  `M ${cx} ${cy} m -${r}, 0 a ${r},${r} 0 1,0 ${r * 2},0 a ${r},${r} 0 1,0 -${r * 2},0`
 
 const linePath = line()
   .x(d => d.x)
   .y(d => d.y)
 
-export const CirclePath = ({ cx, cy, r, number, ...otherProps }) => (
+export const CirclePath = ({
+  cx,
+  cy,
+  r,
+  number,
+  isSelected,
+  fill,
+  ...otherProps
+}) => (
   <Group className="elemental-set">
     <path
       d={circlePath(cx, cy, r)}
       stroke="black"
       strokeWidth="2"
+      fill={fill}
       {...otherProps}
     />
     {number !== undefined && (
-      <UnselectableText x={cx} y={cy} fill="white">
+      <UnselectableText
+        x={cx}
+        y={cy}
+        fill={isSelected ? "white" : "black"}
+      >
         {number}
       </UnselectableText>
     )}
@@ -42,6 +54,8 @@ CirclePath.propTypes = {
   cy: PropTypes.number.isRequired,
   r: PropTypes.number.isRequired,
   number: PropTypes.number,
+  isSelected: PropTypes.bool,
+  fill: PropTypes.string,
 }
 
 export const RevertedCirclePath = ({
@@ -50,6 +64,8 @@ export const RevertedCirclePath = ({
   r,
   rectPoints,
   number,
+  isSelected,
+  fill,
   ...otherProps
 }) => (
   <Group className="elemental-set elemental-set-negated">
@@ -58,13 +74,14 @@ export const RevertedCirclePath = ({
       stroke="black"
       strokeWidth="2"
       fillRule="evenodd"
+      fill={fill}
       {...otherProps}
     />
     {number !== undefined && (
       <UnselectableText
         x={rectPoints[0].x + 30}
         y={rectPoints[0].x + 30}
-        fill="white"
+        fill={isSelected ? "white" : "black"}
       >
         {number}
       </UnselectableText>
@@ -76,21 +93,16 @@ RevertedCirclePath.propTypes = {
   cx: PropTypes.number.isRequired,
   cy: PropTypes.number.isRequired,
   r: PropTypes.number.isRequired,
-  rectPoints: PropTypes.arrayOf(
-    PropTypes.shape({
-      x: PropTypes.number.isRequired,
-      y: PropTypes.number.isRequired,
-    })
-  ),
+  rectPoints: PropTypes.arrayOf(PropTypes.shape({
+    x: PropTypes.number.isRequired,
+    y: PropTypes.number.isRequired,
+  })),
   number: PropTypes.number,
+  isSelected: PropTypes.bool,
+  fill: PropTypes.string,
 }
 
-export const CircleIntersectionPath = ({
-  points,
-  r,
-  numbers,
-  ...otherProps
-}) => {
+export const CircleIntersectionPath = ({ points, r, numbers, ...otherProps }) => {
   points = points.slice(0)
   const pointPairs = []
   for (const first of points) {
@@ -99,7 +111,7 @@ export const CircleIntersectionPath = ({
     }
   }
   const intersects = pointPairs
-    .map(([a, b]) => intersection(a.x, a.y, r, b.x, b.y, r))
+    .map(([a , b]) => intersection(a.x, a.y, r, b.x, b.y, r))
     .map(intersect => ({
       x: intersect[0],
       y: intersect[2],
@@ -119,52 +131,30 @@ export const CircleIntersectionPath = ({
 
 CircleIntersectionPath.propTypes = {
   r: PropTypes.number.isRequired,
-  points: PropTypes.arrayOf(
-    PropTypes.shape({
-      x: PropTypes.number.isRequired,
-      y: PropTypes.number.isRequired,
-    })
-  ),
+  points: PropTypes.arrayOf(PropTypes.shape({
+    x: PropTypes.number.isRequired,
+    y: PropTypes.number.isRequired,
+  })),
   numbers: PropTypes.arrayOf(PropTypes.number),
 }
 
-export const ElementalSet = ({ leftCircle, rightCircle, color, stroke, strokeWidth }) => {
-  const rightPart = arc()
-    .outerRadius(rightCircle.r)
-    .innerRadius(0)
-    .startAngle(Math.PI)
-    .endAngle(Math.PI * 2)
+export const CubicArea = ({ intersections }) => {
+  const data = [
+    ...intersections,
+    intersections[0]
+  ]
 
-  const leftPart = arc()
-    .outerRadius(leftCircle.r)
-    .innerRadius(0)
-    .startAngle(Math.PI)
-    .endAngle(Math.PI * 2)
+  const cubicArea = linePath
+    .curve(curveCatmullRom.alpha(0.5))
 
   return (
-    <Group fill={color} stroke={stroke} strokeWidth={strokeWidth}>
-      <Group transform={`translate(${rightCircle.cx}, ${rightCircle.cy})`}>
-        <path d={rightPart()} />
-      </Group>
-      <Group transform={`translate(${leftCircle.cx}, ${leftCircle.cy})`}>
-        <path d={leftPart()} />
-      </Group>
-    </Group>
+    <path d={cubicArea(data)} />
   )
 }
 
-ElementalSet.propTypes = {
-  leftCircle: PropTypes.shape({
-    cx: PropTypes.number,
-    cy: PropTypes.number,
-    r: PropTypes.number,
-  }),
-  rightCircle: PropTypes.shape({
-    cx: PropTypes.number,
-    cy: PropTypes.number,
-    r: PropTypes.number,
-  }),
-  color: PropTypes.string,
-  stroke: PropTypes.string,
-  strokeWidth: PropTypes.string,
+CubicArea.propTypes = {
+  intersections: PropTypes.arrayOf(PropTypes.shape({
+    x: PropTypes.number.isRequired,
+    y: PropTypes.number.isRequired,
+  }))
 }
