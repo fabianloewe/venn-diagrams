@@ -51,7 +51,7 @@ export default class VDInputReader {
     this.helpSetCount = 0
     let evaluated = false
     while (bracketsRemover.length) {
-      l = bracketsRemover.length()
+      l = bracketsRemover.length
       curEnd++
       if (bracketsRemover.charAt(curEnd) === "(") {
         if (curEnd === l - 1) {
@@ -75,7 +75,7 @@ export default class VDInputReader {
       }
       if (curEnd === l - 1 && bracketsRemover.length > 0) {
         if (openBrackets === 0) {
-          this.evaluateSubstring(bracketsRemover.substring(0, bracketsRemover.length()))
+          this.evaluateSubstring(bracketsRemover.substring(0, bracketsRemover.length))
           bracketsRemover = ""
         } else {
           throw new Error("Opening bracket doesn't have a closing bracket to it.")
@@ -106,11 +106,11 @@ export default class VDInputReader {
     //remove negated sets
     let setPattern = new RegExp("[" + VDInputReader.SETTOKENS + "]")
     let setPattern2 = /[X]?[\\d]*/
-    for (let i = 0; i < substring.length(); i++) {
+    for (let i = 0; i < substring.length; i++) {
       if (substring.charAt(i) === VDInputReader.NEGATETOKEN.charAt(0)) {
-        if (i === substring.length() - 1) throw new Error(VDInputReader.NEGATETOKEN + " doesn't have a follow up set.")
+        if (i === substring.length - 1) throw new Error(VDInputReader.NEGATETOKEN + " doesn't have a follow up set.")
         if (substring.charAt(i + 1) === VDInputReader.NEGATETOKEN.charAt(0)) {
-          substring = substring.substring(0, i) + substring.substring(i + 2, substring.length())
+          substring = substring.substring(0, i) + substring.substring(i + 2, substring.length)
           i--
           continue
         }
@@ -121,8 +121,8 @@ export default class VDInputReader {
           let complement = this.extractSet(set)
           complement.complement(new Set(this.vd.getOmega()))
           this.negatedSets.set(xSetCount, complement)
-          substring = (endIndex === substring.length()) ? substring.substring(0, i) + "X" + xSetCount :
-            substring.substring(0, i) + "X" + xSetCount + substring.substring(endIndex, substring.length())
+          substring = (endIndex === substring.length) ? substring.substring(0, i) + "X" + xSetCount :
+            substring.substring(0, i) + "X" + xSetCount + substring.substring(endIndex, substring.length)
           xSetCount++
         } else {
           throw new Error("something went wrong here [remove negated sets] -> pattern doesn't match")
@@ -169,8 +169,8 @@ export default class VDInputReader {
    */
   indexForNextSet(startIndex: number, string: string): number {
     let endIndex = startIndex + 1
-    for (let j = startIndex + 1; j < string.length(); j++) {
-      if (VDInputReader.CALCULATIONTOKENS.contains(string.substring(j, j + 1))) {
+    for (let j = startIndex + 1; j < string.length; j++) {
+      if (VDInputReader.CALCULATIONTOKENS.includes(string.substring(j, j + 1))) {
         endIndex = j
         break
       }
@@ -185,9 +185,9 @@ export default class VDInputReader {
    */
   checkInput(input: string): void {
     let s
-    for (let i = 0; i < input.length(); i++) {
-      s = String.valueOf(input.charAt(i))
-      if (!VDInputReader.ALLOWEDTOKENS.contains(s)) {
+    for (let i = 0; i < input.length; i++) {
+      s = input.charAt(i)
+      if (!VDInputReader.ALLOWEDTOKENS.includes(s)) {
         throw new Error("Token used which is not allowed. (" + s + ")")
       }
     }
@@ -209,7 +209,7 @@ export default class VDInputReader {
 
     let xNumberPattern = /[X][\\d]+/
     if (string.match(xNumberPattern)) {
-      let i = Number.parseInt(string.substring(1, string.length()))
+      let i = Number.parseInt(string.substring(1, string.length))
       return this.negatedSets.get(i)
     }
 
@@ -248,7 +248,7 @@ export default class VDInputReader {
     }
     sb += "}"
     let result = sb.toString()
-    let rl = result.length()
+    let rl = result.length
     result = result.substring(0, rl - 3) + result.substring(rl - 1, rl)
     console.log(result)
   }

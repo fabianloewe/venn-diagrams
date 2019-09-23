@@ -9,12 +9,12 @@
  */
 export default class VennDiagram {
 	numberOfSets: number;
-	allSets: number[][];
-	omega: number[];
-	a: number[];
-	b: number[];
-	c: number[];
-	d: number[];
+	allSets: ?number[][];
+	omega: ?number[];
+	a: ?number[];
+	b: ?number[];
+	c: ?number[];
+	d: ?number[];
 
 	constructor(numberOfSets: number) {
 		this.setNumberOfSets(numberOfSets);
@@ -74,7 +74,7 @@ export default class VennDiagram {
 		else throw new Error("only 1-4 Sets allowed");
 	}
 
-	getAllSets(): number[][] {
+	getAllSets(): ?number[][] {
 		return this.allSets;
 	}
 

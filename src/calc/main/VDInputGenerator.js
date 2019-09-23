@@ -11,7 +11,7 @@ import MultiIndexIterator from "./MultiIndexIterator";
  */
 export default class VDInputGenerator {
 	vd: VennDiagram;
-	allSets: Map<Number, Set> = new Map();
+	allSets: Map<number, Set> = new Map();
 	numberOfSets: number;
 
 	constructor(numberOfSets: number = 2) {
@@ -22,9 +22,9 @@ export default class VDInputGenerator {
 		for(let i=0; i<l-1; i++) {
 			h1 = 2*l - 3;
 			const s = new Set(allSetsArray[i+1]);
-			this.allSets.put(h1-(i), s.clone());
+			this.allSets.set(h1-(i), s.clone());
 			s.complement(new Set(allSetsArray[0]));
-			this.allSets.put(h1-(i+l-1), s.clone());
+			this.allSets.set(h1-(i+l-1), s.clone());
 		}
 		this.numberOfSets = numberOfSets;
 	}
@@ -50,12 +50,12 @@ export default class VDInputGenerator {
 		let totalCounter = 0;
 		const LASTSTEP = 4;
 		let l;
-		let help1 = new Set(new int[0]);
+		let help1 = new Set(new Array(0));
 		let help2;
-		let help3 = new Set(new int[0]);
+		let help3 = new Set(new Array(0));
 		let blacklist = [];
 		let curBest: Set[] = new Array(5);
-		let allSetsSize = this.allSets.size();
+		let allSetsSize = this.allSets.size;
 		let curSets: boolean[] = new Array(allSetsSize);
 		let curBestSets: boolean[] = new Array(allSetsSize);
 		let removeLastLetter;
@@ -86,7 +86,7 @@ export default class VDInputGenerator {
 					}
 					if(help1.contains(s)
 							&& (curBest[step] == null ||
-							help1.length() < curBest[step].length())
+							help1.length < curBest[step].length)
 							&& !this.isForbidden(blacklist, help1)) {
 						curBest[step] = help1.clone();
 						curBestSets = curSets.slice(0);
@@ -100,10 +100,11 @@ export default class VDInputGenerator {
 						removeLastLetter = true;
 					}
 				}
-				if (removeLastLetter) sb = sb.slice(0, sb.length()-1);
+				if (removeLastLetter) sb = sb.slice(0, sb.length-1);
 				curBest[step+1] = curBest[step].clone();
 				step++;
 				curBestSets = new Array(allSetsSize);
+
 				break;
 			case 1:
 				let mii2 = new MultiIndexIterator(2, allSetsSize);
@@ -124,7 +125,7 @@ export default class VDInputGenerator {
 						break;
 					}
 					if(help1.contains(s) &&
-							(curBest[step] == null || help1.length() < curBest[step].length())) {
+							(curBest[step] == null || help1.length < curBest[step].length)) {
 						curBest[step] = help1.clone();
 						curBestSets = curSets.slice(0);
 					}
@@ -138,7 +139,7 @@ export default class VDInputGenerator {
 						removeLastLetter = true;
 					}
 				}
-				if (removeLastLetter) sb = sb.slice(0, sb.length()-1);
+				if (removeLastLetter) sb = sb.slice(0, sb.length-1);
 				curBest[step+1] = curBest[step].clone();
 				step++;
 				curBestSets = new Array(allSetsSize);
@@ -162,7 +163,7 @@ export default class VDInputGenerator {
 						break;
 					}
 					if(help1.contains(s) &&
-							(curBest[step] == null || help1.length() < curBest[step].length())) {
+							(curBest[step] == null || help1.length < curBest[step].length)) {
 						curBest[step] = help1.clone();
 						curBestSets = curSets.slice(0);
 					}
@@ -176,7 +177,7 @@ export default class VDInputGenerator {
 						removeLastLetter = true;
 					}
 				}
-				if (removeLastLetter) sb = sb.slice(0, sb.length()-1);
+				if (removeLastLetter) sb = sb.slice(0, sb.length-1);
 				curBest[step+1] = curBest[step].clone();
 				step++;
 				curBestSets = new Array(allSetsSize);
@@ -191,7 +192,7 @@ export default class VDInputGenerator {
 					curSets = new Array(allSetsSize);
 					for(let i=0; i<now4.length; i++) {
 						if(now4[i] === 1) {
-							if (help2 == null) {
+							if (help2 === null) {
 								help2 = this.allSets.get(i).clone();
 							}
 							else {
@@ -200,7 +201,7 @@ export default class VDInputGenerator {
 							curSets[i] = true;
 						}
 					}
-					if(help2 == null) help2 = new Set(new Array(0));
+					if(help2 === null) help2 = new Set(new Array(0));
 					help1.subtract(help2);
 					if(help1.equals(s)) {
 						curBest[step] = help1.clone();
@@ -208,7 +209,7 @@ export default class VDInputGenerator {
 						break;
 					}
 					if(help1.contains(s) &&
-							(curBest[step] == null || help1.length() < curBest[step].length())) {
+							(curBest[step] === null || help1.length < curBest[step].length)) {
 						curBest[step] = help1.clone();
 						curBestSets = curSets.slice(0);
 					}
@@ -223,7 +224,7 @@ export default class VDInputGenerator {
 					}
 				}
 				if (removeLastLetter) {
-					sb = sb.slice(0, sb.length()-1);
+					sb = sb.slice(0, sb.length-1);
 					sb += ")";
 				}
 				curBest[step+1] = curBest[step].clone();
@@ -257,7 +258,7 @@ export default class VDInputGenerator {
 						break;
 					}
 					if(help1.contains(s) &&
-							(curBest[step] == null || help1.length() < curBest[step].length())) {
+							(curBest[step] == null || help1.length < curBest[step].length)) {
 						curBest[step] = help1.clone();
 						curBestSets = curSets.slice(0);
 					}
@@ -272,7 +273,7 @@ export default class VDInputGenerator {
 					}
 				}
 				if (removeLastLetter) {
-					sb = sb.slice(0, sb.length()-1);
+					sb = sb.slice(0, sb.length-1);
 					sb += ")";
 				}
 				firstRun = false;
@@ -292,7 +293,7 @@ export default class VDInputGenerator {
 			case 6:
 				let remainder = curBest[LASTSTEP].clone();
 				remainder.subtract(s);
-				let remL = remainder.length();
+				let remL = remainder.length;
 				let s1;
 				for(let i=0; i<remL; i++) {
 					s1 = this.generateInput(new Set([remainder.getSet()[i]]));
@@ -309,14 +310,14 @@ export default class VDInputGenerator {
 	}
 
 	isForbidden(blacklist: Set[], element: Set): boolean {
-		if(blacklist.length() === 0) return false;
-		for(let i=0; i<blacklist.length(); i++) {
+		if(blacklist.length === 0) return false;
+		for(let i=0; i<blacklist.length; i++) {
 			if(element.equals(blacklist[i])) return true;
 		}
 		return false;
 	}
 
-	getLetter(i): string {
+	getLetter(i: number): string {
 		let exceptionI = "[getLetter], i: ";
 		switch(this.numberOfSets) {
 		case 1:

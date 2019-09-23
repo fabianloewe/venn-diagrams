@@ -5,7 +5,7 @@
  *
  * @author Skyphoenix
  */
-export default class MultiIndexIterator implements Iterator<number[]>, Iterable<number[]> {
+export default class MultiIndexIterator implements Iterable<Array<number>> {
   countAll: boolean;
   size: number;
   index: number;
@@ -18,26 +18,26 @@ export default class MultiIndexIterator implements Iterator<number[]>, Iterable<
    * @param index - number of digits
    * @param countAll
    */
-  constructor(size: number, index: number, countAll: boolean) {
-    this.points = new Array(index);
+  constructor(size: number, index: number, countAll: boolean = false) {
+    this.points = Array.from({ length: index }, () => 0);
     this.points[index - 1] = -1;
     this.size = size;
     this.index = index;
     this.countAll = countAll;
   }
 
-  next(): number[] {
+  next(): Array<number> {
     if (this.hasNext()) {
-      this.points[index - 1] += 1;
-      if (this.points[index - 1] >= size) {
+      this.points[this.index - 1] += 1;
+      if (this.points[this.index - 1] >= this.size) {
         let i = 1;
-        let added = new Array(index);
-        while ((this.points[index - i]) >= size) {
-          this.points[index - (i + 1)] += 1;
-          added[index - i] = true;
+        const added: boolean[] = new Array(this.index);
+        while ((this.points[this.index - i]) >= this.size) {
+          this.points[this.index - (i + 1)] += 1;
+          added[this.index - i] = true;
           i++;
         }
-        for (i = 0; i < index; i++) {
+        for (i = 0; i < this.index; i++) {
           if (added[i]) {
             if (this.countAll)
               this.points[i] = this.points[i - 1];
@@ -55,13 +55,35 @@ export default class MultiIndexIterator implements Iterator<number[]>, Iterable<
   hasNext(): boolean {
     let hasNext = false;
     for (const i of this.points) {
-      if (!(i === this.size - 1))
+      if (i !== (this.size - 1))
         hasNext = true;
     }
     return hasNext;
   }
 
+  /*
   iterator(): Iterator<number[]> {
     return this;
   }
+  */
+
+  // $FlowFixMe
+  [Symbol.iterator](): Iterator<number[]> {
+    return {
+      next: () => {
+        if (this.hasNext()) {
+          return { value: this.next(), done: false };
+        } else {
+          return { done: true };
+        }
+      }
+    };
+  }
+
+  /*::
+  @@iterator(): Iterator<number[]> {
+    // $FlowFixMe
+    return this[Symbol.iterator]()
+  }
+  */
 }

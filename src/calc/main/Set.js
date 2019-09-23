@@ -56,7 +56,7 @@ export default class Set {
 	 */
 	intersect(set2: Set): void {
 		let set2a = set2.getSet();
-		const result = new Int8Array();
+		const result = [];
 		for(let j=0; j<this.set.length; j++) {
 			for(let k=0; k<set2a.length; k++) {
 				if (this.set[j] === set2a[k])
@@ -72,20 +72,20 @@ export default class Set {
 	 */
 	merge(set2: Set): void {
 		let set2a = set2.getSet();
-		const result = new Int8Array();
-		if (this.set.length === 0 && set2a.length === 0) this.set = [null];
+		const result = [];
+		if (this.set.length === 0 && set2a.length === 0) this.set = new Array(0);
 		if (this.set.length === 0)
 			this.set = set2a;
 		if (set2a.length === 0)
 			return;
 		for(let i=0; i<this.set.length; i++) {
-			result.add(this.set[i]);
+			result.push(this.set[i]);
 		}
 		let h1;
-		for(let i=0; i<set2.length(); i++) {
+		for(let i=0; i<set2.length; i++) {
 			h1 = set2.getSet()[i];
 			if(this.doesntContain(new Set([h1]))) {
-				result.add(h1);
+				result.push(h1);
 			}
 		}
 		this.set = result;
@@ -97,15 +97,15 @@ export default class Set {
 	 */
 	subtract(set2: Set): void {
 		let set2a = set2.getSet();
-		let result = new Int8Array();
+		let result = [];
 		if (set2a.length === 0) return;
 		outer:
-		for(let j=0; j<set.length; j++) {
+		for(let j=0; j<this.set.length; j++) {
 			for(let k=0; k<set2a.length; k++) {
 				if (this.set[j] === set2a[k])
 					continue outer;
 			}
-			result.add(set[j]);
+			result.push(this.set[j]);
 		}
 		this.set = result;
 	}
@@ -124,7 +124,7 @@ export default class Set {
 		return this.set;
 	}
 
-	length(): number {
+	get length(): number {
 		return this.set.length;
 	}
 
