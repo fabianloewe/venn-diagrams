@@ -40,7 +40,7 @@ export default class VDInputReader {
    * @return
    */
   readInput(input: string): Set {
-    input = input.replace(/\\s/g, "")
+    input = input.replace(/\s/g, "")
     if (input.length === 0) return new Set(new Array(0))
     this.checkInput(input)
     let bracketsRemover = input
@@ -105,7 +105,7 @@ export default class VDInputReader {
     let xSetCount = 0
     //remove negated sets
     let setPattern = new RegExp("[" + VDInputReader.SETTOKENS + "]")
-    let setPattern2 = /[X]?[\\d]*/
+    let setPattern2 = /[X]?[\d]*/
     for (let i = 0; i < substring.length; i++) {
       if (substring.charAt(i) === VDInputReader.NEGATETOKEN.charAt(0)) {
         if (i === substring.length - 1) throw new Error(VDInputReader.NEGATETOKEN + " doesn't have a follow up set.")
@@ -201,16 +201,16 @@ export default class VDInputReader {
    * @return the extracted @Set
    */
   extractSet(string: string): Set {
-    let numberPattern = /[\\d]+/
-    if (string.match(numberPattern)) {
-      let i = Number.parseInt(string)
-      return this.helpSets.get(i)
-    }
-
-    let xNumberPattern = /[X][\\d]+/
+    const xNumberPattern = /[X][\d]+/
     if (string.match(xNumberPattern)) {
       let i = Number.parseInt(string.substring(1, string.length))
       return this.negatedSets.get(i)
+    }
+
+    const numberPattern = /[\d]+/
+    if (string.match(numberPattern)) {
+      let i = Number.parseInt(string)
+      return this.helpSets.get(i)
     }
 
     switch (string) {
