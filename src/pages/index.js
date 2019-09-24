@@ -9,6 +9,8 @@ import {
     AccordionItemPanel,
 } from "react-accessible-accordion";
 import 'react-accessible-accordion/dist/fancy-example.css';
+import { toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 import Layout from "../components/layout";
 import SEO from "../components/seo";
 import VennDiagram from "../components/venn-diagram";
@@ -51,6 +53,11 @@ const InputContainer = styled.div`
   //border-radius: 5px;
 `;
 
+toast.configure({
+  autoClose: 10000,
+  draggable: true,
+})
+
 class IndexPage extends React.Component {
   state = {
     numSetsText: "1",
@@ -61,6 +68,7 @@ class IndexPage extends React.Component {
     inputGen: new VDInputGenerator(1),
     selected: [],
     setsOpGen: "",
+    color: "#004dcf",
   }
 
   handleNumSetsChange = event => {
@@ -94,7 +102,8 @@ class IndexPage extends React.Component {
         selected: inputReader.readInput(input).getSet(),
       });
     } catch (e) {
-      alert(e);
+      toast.error(e.toString());
+      console.error(e);
     }
   }
 
@@ -107,18 +116,29 @@ class IndexPage extends React.Component {
   handleSetsOpGen = () => {
     const { inputGen, selected } = this.state;
     try {
+      let result = inputGen.generateInput(new VDSet(selected));
+      result = result.replace(/nN/g, "⋂");
+      result = result.replace(/uU/g, "⋃");
+      result = result.replace(/-/g, "∖");
+      result = result.replace(/~/g, "¬");
       this.setState({
-        setsOpGen: inputGen.generateInput(new VDSet(selected)),
+        setsOpGen: result,
       });
     } catch (e) {
-      alert(e);
+      toast.error(e.toString());
+      console.error(e);
     }
   }
 
   handleElemSetsSelected = newElemSets => this.setState({ selected: newElemSets })
 
+  handleChangeColor = color => {
+    console.log("new color:", color)
+    this.setState({ color: color.hex })
+  }
+
   render() {
-    const { numSets, numSetsText, setsOp, selected, setsOpGen } = this.state;
+    const { numSets, numSetsText, setsOp, selected, setsOpGen, color } = this.state;
     const layout = [
       { i: "left", x: 0, y: 0, w: 1, h: 1, static: true },
       { i: "right", x: 1, y: 0, w: 1, h: 1, static: true },
@@ -152,6 +172,8 @@ class IndexPage extends React.Component {
                     container={InputContainer}
                     value={numSetsText}
                     onChange={this.handleNumSetsChange}
+                    color={color}
+                    onChangeColor={this.handleChangeColor}
                   />
                 </AccordionItemPanel>
               </AccordionItem>
@@ -195,7 +217,7 @@ class IndexPage extends React.Component {
               setsCount={numSets}
               selected={selected}
               onSelected={this.handleElemSetsSelected}
-              color="blue"
+              color={color}
             />
           </Half>
         </GridLayout>
