@@ -40,9 +40,10 @@ export const OpInput = ({
 
   return (
     <div className={className}>
-      <label htmlFor="sets-op">Set operations: </label>
+      {/*<label htmlFor="sets-op">Set operations: </label>*/}
       <input
         id="sets-op"
+        type="text"
         value={value}
         placeholder={"Tap on the virtual keyboard to start"}
         onChange={onChangeInput}

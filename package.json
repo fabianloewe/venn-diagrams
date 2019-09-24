@@ -21,10 +21,15 @@
     "gatsby-transformer-sharp": "^2.2.3",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
+    "react-accessible-accordion": "^3.0.0",
     "react-dom": "^16.8.6",
+    "react-grid-layout": "^0.16.6",
     "react-helmet": "^5.2.1",
     "simple-keyboard": "^2.26.4",
-    "styled-components": "^4.3.2"
+    "styled-components": "^4.3.2",
+    "typeface-roboto": "^0.0.75",
+    "typeface-roboto-mono": "^0.0.75",
+    "typeface-source-sans-pro": "^0.0.75"
   },
   "devDependencies": {
     "nativefier": "^7.7.0",

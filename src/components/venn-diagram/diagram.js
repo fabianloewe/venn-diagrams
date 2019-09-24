@@ -5,29 +5,32 @@ import TwoSetsDiagram from "./two-sets"
 import ThreeSetsDiagram from "./three-sets"
 import FourSetsDiagram from "./four-sets"
 
-const VennDiagram = ({ containerSize, setsCount, selected, color }) => {
+const VennDiagram = ({
+  containerSize,
+  setsCount,
+  selected = [],
+  onSelected,
+  color
+}) => {
   const radius = (
     containerSize.width < containerSize.height
       ? containerSize.width
       : containerSize.height
   ) / 3.5;
-  const [selectedElemSets, setSelectedElemSets] = useState(selected || [])
-
-  useEffect(() => {
-    setSelectedElemSets(selected)
-  }, [selected])
 
   const diagramProps = {
     containerSize: containerSize,
     radius: radius,
-    selected: selectedElemSets,
+    selected,
     color: color,
     onClick: ({ number }) => {
-      if (selectedElemSets.includes(number)) {
-        setSelectedElemSets(selectedElemSets.filter(e => e !== number))
+      let newElemSets;
+      if (selected.includes(number)) {
+        newElemSets = selected.filter(e => e !== number)
       } else {
-        setSelectedElemSets([...selectedElemSets, number])
+        newElemSets = [...selected, number]
       }
+      onSelected(newElemSets)
     },
   }
 
@@ -58,6 +61,7 @@ VennDiagram.propTypes = {
   }),
   setsCount: PropTypes.number.isRequired,
   selected: PropTypes.arrayOf(PropTypes.number),
+  onSelected: PropTypes.func.isRequired,
   color: PropTypes.string,
 }
 
