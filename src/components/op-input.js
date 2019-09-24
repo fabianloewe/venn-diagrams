@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 import PropTypes from "prop-types";
 import "simple-keyboard/build/css/index.css";
@@ -10,7 +10,8 @@ export const OpInput = ({
   onChange,
   onKeyPress,
 }) => {
-  let keyboard = null;
+  const [keyboard, setKeyboard] = useState(null);
+
   const onChangeInput = event => {
     const input = event.target.value + " ";
     console.log("new input:", input);
@@ -28,12 +29,12 @@ export const OpInput = ({
       import("simple-keyboard").then(KeyboardClass => {
         const Keyboard = KeyboardClass.default
 
-        keyboard = new Keyboard({
+        setKeyboard(new Keyboard({
           onChange,
           onKeyPress,
           layout: { "default": layout},
           inputPattern,
-        });
+        }));
       });
     }
   }, [layout]);
