@@ -90,7 +90,7 @@ class IndexPage extends React.Component {
     return (
       <Layout>
         <SEO title="Venn Diagram" />
-        <h1>The Venn diagram tool</h1>
+        {/*<h1>The Venn diagram tool</h1>*/}
         <p>Disclaimer: The most right element is the first set.</p>
         <InputContainer>
           <label htmlFor="num-sets">Number of sets: </label>

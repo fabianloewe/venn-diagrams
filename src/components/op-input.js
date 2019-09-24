@@ -1,8 +1,7 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import ReactDOM from "react-dom";
 import PropTypes from "prop-types";
-import Keyboard from "react-simple-keyboard";
-import "react-simple-keyboard/build/css/index.css";
+import "simple-keyboard/build/css/index.css";
 
 export const OpInput = ({
   className,
@@ -11,19 +10,33 @@ export const OpInput = ({
   onChange,
   onKeyPress,
 }) => {
-  const keyboard = useRef();
-
+  let keyboard = null;
   const onChangeInput = event => {
     const input = event.target.value + " ";
     console.log("new input:", input);
     onChange(input);
-    keyboard.current.setInput(input);
+    keyboard.setInput(input);
   };
 
   const inputPattern = new RegExp(
     "[\\s" + layout.map(row => row.replace(/\s/g, "")).join("") + "]"
   );
   console.log(inputPattern);
+
+  useEffect(() => {
+    if (window) {
+      import("simple-keyboard").then(KeyboardClass => {
+        const Keyboard = KeyboardClass.default
+
+        keyboard = new Keyboard({
+          onChange,
+          onKeyPress,
+          layout: { "default": layout},
+          inputPattern,
+        });
+      });
+    }
+  }, [layout]);
 
   return (
     <div className={className}>
@@ -34,13 +47,7 @@ export const OpInput = ({
         placeholder={"Tap on the virtual keyboard to start"}
         onChange={onChangeInput}
       />
-      <Keyboard
-        keyboardRef={r => (keyboard.current = r)}
-        layout={{ "default": layout}}
-        inputPattern={inputPattern}
-        onChange={onChange}
-        onKeyPress={onKeyPress}
-      />
+      <div className="simple-keyboard" />
     </div>
   );
 };

@@ -10298,11 +10298,6 @@ react-side-effect@^1.1.0:
   dependencies:
     shallowequal "^1.0.1"
 
-react-simple-keyboard@^2.0.4:
-  version "2.0.4"
-  resolved "https://registry.yarnpkg.com/react-simple-keyboard/-/react-simple-keyboard-2.0.4.tgz#eee5c04fe8409cf85b0f7be6723f0058c2714d79"
-  integrity sha512-CfHRE3VKmYTxyK7a40TnGSJpWyeMiLCMWeXXcY/loLtUY4uMllDo9Jm2HbYUbeNuRtec0RpE43hUhuo9SHk32g==
-
 react@^16.8.6, react@^16.9.0:
   version "16.9.0"
   resolved "https://registry.yarnpkg.com/react/-/react-16.9.0.tgz#40ba2f9af13bc1a38d75dbf2f4359a5185c4f7aa"
@@ -11111,6 +11106,11 @@ simple-get@^3.0.3:
     decompress-response "^3.3.0"
     once "^1.3.1"
     simple-concat "^1.0.0"
+
+simple-keyboard@^2.26.4:
+  version "2.26.4"
+  resolved "https://registry.yarnpkg.com/simple-keyboard/-/simple-keyboard-2.26.4.tgz#2e19769d3300cc4d4fc517dc4351291a8f158b97"
+  integrity sha512-f2gqHOyp++n4IkxA4irYiD6XqAYUZQWmp9b8+pttcF3iGqvJVBtgqfUICWjptcSKEFRf/BxNELR8hRGeL8QUEQ==
 
 simple-swizzle@^0.2.2:
   version "0.2.2"
