@@ -120,32 +120,6 @@ export const ThreeSetsDiagram = ({
       <g>
         <path
           d={
-            `M${intersect13[0]},${intersect13[2]} ` +
-            `A${radius},${radius} 0 0,1 ` +
-            `${intersect23[0]},${intersect23[2]} ` +
-            `A${radius},${radius} 0 0,0 ` +
-            `${intersect12[0]},${intersect12[2]} ` +
-            `A${radius},${radius} 0 0,1 ` +
-            `${intersect13[0]},${intersect13[2]} Z`
-          }
-          fill={selected.includes(number) ? color : "transparent"}
-          stroke="black"
-          strokeWidth="2px"
-          onClick={event => onClick({ number, event })}
-        />
-        <UnselectableText
-          x={intersect13[0] - radius / 4}
-          y={intersect13[2] + radius / 4}
-          fill={selected.includes(number) ? "white" : color}
-        >
-         {number}
-        </UnselectableText>
-      </g>
-    )),
-    getElementalSet(5, number => (
-      <g>
-        <path
-          d={
             `M${intersect12[1]},${intersect12[3]} ` +
             `A${radius},${radius} 0 0,1 ` +
             `${intersect13[1]},${intersect13[3]} ` +
@@ -168,7 +142,7 @@ export const ThreeSetsDiagram = ({
         </UnselectableText>
       </g>
     )),
-    getElementalSet(6, number => (
+    getElementalSet(5, number => (
       <g>
         <path
           d={
@@ -188,6 +162,32 @@ export const ThreeSetsDiagram = ({
         <UnselectableText
           x={intersect23[1] + radius / 4}
           y={intersect23[3]}
+          fill={selected.includes(number) ? "white" : color}
+        >
+         {number}
+        </UnselectableText>
+      </g>
+    )),
+    getElementalSet(6, number => (
+      <g>
+        <path
+          d={
+            `M${intersect13[0]},${intersect13[2]} ` +
+            `A${radius},${radius} 0 0,1 ` +
+            `${intersect23[0]},${intersect23[2]} ` +
+            `A${radius},${radius} 0 0,0 ` +
+            `${intersect12[0]},${intersect12[2]} ` +
+            `A${radius},${radius} 0 0,1 ` +
+            `${intersect13[0]},${intersect13[2]} Z`
+          }
+          fill={selected.includes(number) ? color : "transparent"}
+          stroke="black"
+          strokeWidth="2px"
+          onClick={event => onClick({ number, event })}
+        />
+        <UnselectableText
+          x={intersect13[0] - radius / 4}
+          y={intersect13[2] + radius / 4}
           fill={selected.includes(number) ? "white" : color}
         >
          {number}
