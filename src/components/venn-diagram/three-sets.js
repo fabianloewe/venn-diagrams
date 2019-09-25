@@ -220,7 +220,7 @@ export const ThreeSetsDiagram = ({
         </UnselectableText>
       </g>
     )),
-    getElementalSet(8, number => (
+    getElementalSet(0, number => (
       <g>
         <path
           d={

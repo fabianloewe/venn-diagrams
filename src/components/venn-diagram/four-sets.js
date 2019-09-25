@@ -387,7 +387,7 @@ export const FourSetsDiagram = ({
         </UnselectableText>
       </g>
     )),
-    getElementalSet(16, number => (
+    getElementalSet(0, number => (
       <g>
         <path
           d={
@@ -419,28 +419,6 @@ export const FourSetsDiagram = ({
         </UnselectableText>
       </g>
     )),
-    /*
-    [20, (
-      <g transform="rotate(40)">
-        <ellipse cx={svgSize / 2 + 110} cy={svgSize / 2 - 190} rx={radius} ry={radius / 2} stroke="black" strokeWidth="2" fill="none" />
-      </g>
-    )],
-    [21, (
-      <g transform="rotate(40)">
-        <ellipse cx={svgSize / 2 + 110} cy={svgSize / 2 - 140} rx={radius} ry={radius / 2} stroke="black" strokeWidth="2" fill="none" />
-      </g>
-    )],
-    [22, (
-      <g transform="rotate(-40)">
-        <ellipse cx={svgSize / 2 - 260} cy={svgSize / 2 + 190} rx={radius} ry={radius / 2} stroke="black" strokeWidth="2" fill="none" />
-      </g>
-    )],
-    [23, (
-      <g transform="rotate(-40)">
-        <ellipse cx={svgSize / 2 - 260} cy={svgSize / 2 + 240} rx={radius} ry={radius / 2} stroke="black" strokeWidth="2" fill="none" />
-      </g>
-    )]
-    */
   ]
 
   return (

@@ -104,7 +104,7 @@ export const TwoSetsDiagram = ({
         </UnselectableText>
       </g>
     )),
-    getElementalSet(4, number => (
+    getElementalSet(0, number => (
       <g>
         <path
           d={

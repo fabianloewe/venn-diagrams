@@ -22,7 +22,7 @@ export const OneSetDiagram = ({
         isSelected={selected.includes(1)}
       />
     )],
-    [2, (
+    [0, (
       <RevertedCirclePath
         cx={containerSize.height / 2}
         cy={containerSize.width / 2}
