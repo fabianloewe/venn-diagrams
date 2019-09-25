@@ -16,15 +16,13 @@ export default class VDInputGenerator {
 
 	constructor(numberOfSets: number = 2) {
 		this.vd = new VennDiagram(numberOfSets);
-		let allSetsArray = this.vd.getAllSets();
+		let allSetsArray: Array<Set> = this.vd.getAllSets();
 		let l = allSetsArray.length;
-		let h1;
-		for(let i=0; i<l-1; i++) {
-			h1 = 2*l - 3;
-			const s = new Set(allSetsArray[i+1]);
-			this.allSets.set(h1-(i), s.clone());
-			s.complement(new Set(allSetsArray[0]));
-			this.allSets.set(h1-(i+l-1), s.clone());
+		for(let i=0; i<l; i++) {
+			const s = allSetsArray[i].clone();
+			this.allSets.set(i, s.clone());
+			s.complement(this.vd.getOmega());
+			if (i !== l-1) this.allSets.set(l+i, s.clone());
 		}
 		this.numberOfSets = numberOfSets;
 	}
@@ -96,7 +94,7 @@ export default class VDInputGenerator {
 				removeLastLetter = false;
 				for(let i=0; i<l; i++) {
 					if(curBestSets[i]) {
-						sb += this.getLetter(l-1-i) + "U";
+						sb += this.getLetter(i) + "U";
 						removeLastLetter = true;
 					}
 				}
@@ -135,7 +133,7 @@ export default class VDInputGenerator {
 				for(let i=0; i<l; i++) {
 					if(curBestSets[i]) {
 						if(!removeLastLetter) sb += "-";
-						sb += this.getLetter(l-1-i) + "-";
+						sb += this.getLetter(i) + "-";
 						removeLastLetter = true;
 					}
 				}
@@ -173,7 +171,7 @@ export default class VDInputGenerator {
 				for(let i=0; i<l; i++) {
 					if(curBestSets[i]) {
 						if(!removeLastLetter) sb += "n";
-						sb += this.getLetter(l-1-i) + "n";
+						sb += this.getLetter(i) + "n";
 						removeLastLetter = true;
 					}
 				}
@@ -219,7 +217,7 @@ export default class VDInputGenerator {
 				for(let i=0; i<l; i++) {
 					if(curBestSets[i]) {
 						if(!removeLastLetter) sb += "-(";
-						sb += this.getLetter(l-1-i) + "n";
+						sb += this.getLetter(i) + "n";
 						removeLastLetter = true;
 					}
 				}
@@ -268,7 +266,7 @@ export default class VDInputGenerator {
 				for(let i=0; i<l; i++) {
 					if(curBestSets[i]) {
 						if(!removeLastLetter) sb += "n(";
-						sb += this.getLetter(l-1-i) + "-";
+						sb += this.getLetter(i) + "-";
 						removeLastLetter = true;
 					}
 				}
@@ -323,15 +321,17 @@ export default class VDInputGenerator {
 		case 1:
 			switch(i) {
 			case 0: return "A";
-			case 1: return "~A";
+			case 1: return "O";
+			case 2: return "~A";
 			default: throw new Error(exceptionI + i);
 			}
 		case 2:
 			switch (i) {
 			case 0: return "A";
 			case 1: return "B";
-			case 2: return "~A";
-			case 3: return "~B";
+			case 2: return "O";
+			case 3: return "~A";
+			case 4: return "~B";
 			default: throw new Error(exceptionI + i);
 			}
 		case 3:
@@ -339,9 +339,10 @@ export default class VDInputGenerator {
 			case 0: return "A";
 			case 1: return "B";
 			case 2: return "C";
-			case 3: return "~A";
-			case 4: return "~B";
-			case 5: return "~C";
+			case 3: return "O";
+			case 4: return "~A";
+			case 5: return "~B";
+			case 6: return "~C";
 			default: throw new Error(exceptionI + i);
 			}
 		case 4:
@@ -350,10 +351,11 @@ export default class VDInputGenerator {
 			case 1: return "B";
 			case 2: return "C";
 			case 3: return "D";
-			case 4: return "~A";
-			case 5: return "~B";
-			case 6: return "~C";
-			case 7: return "~D";
+			case 4: return "O";
+			case 5: return "~A";
+			case 6: return "~B";
+			case 7: return "~C";
+			case 8: return "~D";
 			default: throw new Error(exceptionI + i);
 			}
 		default: throw new Error("[getLetter], numberOfSets: " + this.numberOfSets);

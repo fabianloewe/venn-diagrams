@@ -97,6 +97,7 @@ class IndexPage extends React.Component {
     input = input.replace(/⋃/g, "u");
     input = input.replace(/∖/g, "-");
     input = input.replace(/¬/g, "~");
+    input = input.replace(/Ω/g, "o");
 
     try {
       this.setState({
@@ -114,8 +115,9 @@ class IndexPage extends React.Component {
     const { inputGen, selected } = this.state;
     try {
       let result = inputGen.generateInput(new VDSet(selected));
-      result = result.replace(/nN/g, "⋂");
-      result = result.replace(/uU/g, "⋃");
+      result = result.replace(/[nN]/g, "⋂");
+      result = result.replace(/[uU]/g, "⋃");
+      result = result.replace(/[oO]/g, "Ω");
       result = result.replace(/-/g, "∖");
       result = result.replace(/~/g, "¬");
       this.setState({
@@ -194,16 +196,18 @@ class IndexPage extends React.Component {
     )
   }
 
-  renderDiagram() {
+  renderDiagram(width, height) {
     const { numSets, selected, color } = this.state;
     return (
-      <VennDiagram
-        containerSize={{ width: 600, height: 600 }}
-        setsCount={numSets}
-        selected={selected}
-        onSelected={this.handleElemSetsSelected}
-        color={color}
-      />
+      <div>
+        <VennDiagram
+          containerSize={{ width, height }}
+          setsCount={numSets}
+          selected={selected}
+          onSelected={this.handleElemSetsSelected}
+          color={color}
+        />
+      </div>
     )
   }
 
@@ -230,13 +234,13 @@ class IndexPage extends React.Component {
               {this.renderToolbar()}
             </Half>
             <Half key="right" left={20}>
-              {this.renderDiagram()}
+              {this.renderDiagram(600, 600)}
             </Half>
           </GridLayout>
         </BrowserView>
         <MobileView>
           {this.renderToolbar()}
-          {this.renderDiagram()}
+          {this.renderDiagram(400, 400)}
         </MobileView>
       </Layout>
     )

@@ -21,7 +21,7 @@ export default class VDInputReader {
   static INTERSECTTOKEN = "Nn"
   static SUBTRACTTOKEN = "-"
   static CALCULATIONTOKENS = VDInputReader.MERGETOKEN + VDInputReader.INTERSECTTOKEN + VDInputReader.SUBTRACTTOKEN
-  static SETTOKENS = "aAbBcCdD"
+  static SETTOKENS = "aAbBcCdDoO"
   static ALLOWEDTOKENS = "()" + VDInputReader.SETTOKENS + VDInputReader.NEGATETOKEN + VDInputReader.CALCULATIONTOKENS
 
   /**
@@ -215,21 +215,20 @@ export default class VDInputReader {
 
     switch (string) {
       case "A":
-        return new Set(this.vd.getA())
       case "a":
-        return new Set(this.vd.getA())
+        return this.vd.getA()
       case "B":
-        return new Set(this.vd.getB())
       case "b":
-        return new Set(this.vd.getB())
+        return this.vd.getB()
       case "C":
-        return new Set(this.vd.getC())
       case "c":
-        return new Set(this.vd.getC())
+        return this.vd.getC()
       case "D":
-        return new Set(this.vd.getD())
       case "d":
-        return new Set(this.vd.getD())
+        return this.vd.getD()
+      case "o":
+      case "O":
+        return this.vd.getOmega()
       default:
         throw new Error("something went wrong here [extractSet()]: " + string)
     }
