@@ -10,7 +10,8 @@ import {
 } from "react-accessible-accordion";
 import 'react-accessible-accordion/dist/fancy-example.css';
 import { toast } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
+import "react-toastify/dist/ReactToastify.css";
+import { BrowserView, MobileView } from "react-device-detect";
 import Layout from "../components/layout";
 import SEO from "../components/seo";
 import VennDiagram from "../components/venn-diagram";
@@ -107,11 +108,7 @@ class IndexPage extends React.Component {
     }
   }
 
-  handleReset = () => {
-    this.setState({
-      selected: []
-    })
-  }
+  handleReset = () => this.setState({ selected: [] })
 
   handleSetsOpGen = () => {
     const { inputGen, selected } = this.state;
@@ -137,6 +134,79 @@ class IndexPage extends React.Component {
     this.setState({ color: color.hex })
   }
 
+  renderToolbar() {
+    const { numSetsText, setsOp, selected, setsOpGen, color, numSets } = this.state;
+    return (
+      <Accordion
+        allowMultipleExpanded={true}
+        allowZeroExpanded={true}
+        preExpanded={["diagram-settings"]}
+      >
+        <AccordionItem uuid="diagram-settings">
+          <AccordionItemHeading>
+            <AccordionItemButton>
+              Adjust diagram settings
+            </AccordionItemButton>
+          </AccordionItemHeading>
+          <AccordionItemPanel>
+            <SettingsItem
+              container={InputContainer}
+              value={numSetsText}
+              onChange={this.handleNumSetsChange}
+              color={color}
+              onChangeColor={this.handleChangeColor}
+            />
+          </AccordionItemPanel>
+        </AccordionItem>
+        <AccordionItem uuid="try-set-ops">
+          <AccordionItemHeading>
+            <AccordionItemButton>
+              Try out set operations
+            </AccordionItemButton>
+          </AccordionItemHeading>
+          <AccordionItemPanel>
+            <TryhardItem
+              container={InputContainer}
+              layout={layouts[numSets - 1]}
+              value={setsOp}
+              onChange={this.handleSetsOpChange}
+              onEvaluate={this.handleSetsOpEval}
+              onReset={this.handleReset}
+            />
+          </AccordionItemPanel>
+        </AccordionItem>
+        <AccordionItem uuid="get-set-ops">
+          <AccordionItemHeading>
+            <AccordionItemButton>
+              Generate set operations based on the diagram
+            </AccordionItemButton>
+          </AccordionItemHeading>
+          <AccordionItemPanel>
+            <GeneratorItem
+              container={InputContainer}
+              value={setsOpGen}
+              onGenerate={this.handleSetsOpGen}
+              onReset={this.handleReset}
+            />
+          </AccordionItemPanel>
+        </AccordionItem>
+      </Accordion>
+    )
+  }
+
+  renderDiagram() {
+    const { numSets, selected, color } = this.state;
+    return (
+      <VennDiagram
+        containerSize={{ width: 600, height: 600 }}
+        setsCount={numSets}
+        selected={selected}
+        onSelected={this.handleElemSetsSelected}
+        color={color}
+      />
+    )
+  }
+
   render() {
     const { numSets, numSetsText, setsOp, selected, setsOpGen, color } = this.state;
     const layout = [
@@ -148,79 +218,26 @@ class IndexPage extends React.Component {
         <SEO title="Venn Diagram" />
         {/*<h1>The Venn diagram tool</h1>*/}
         <p>Disclaimer: The most right element is the first set.</p>
-        <GridLayout
-          className="layout"
-          layout={layout}
-          cols={2}
-          rowHeight={1}
-          width={1200}
-        >
-          <Half key="left" left={0}>
-            <Accordion
-              allowMultipleExpanded={true}
-              allowZeroExpanded={true}
-              preExpanded={["diagram-settings"]}
-            >
-              <AccordionItem uuid="diagram-settings">
-                <AccordionItemHeading>
-                  <AccordionItemButton>
-                    Adjust diagram settings
-                  </AccordionItemButton>
-                </AccordionItemHeading>
-                <AccordionItemPanel>
-                  <SettingsItem
-                    container={InputContainer}
-                    value={numSetsText}
-                    onChange={this.handleNumSetsChange}
-                    color={color}
-                    onChangeColor={this.handleChangeColor}
-                  />
-                </AccordionItemPanel>
-              </AccordionItem>
-              <AccordionItem uuid="try-set-ops">
-                <AccordionItemHeading>
-                  <AccordionItemButton>
-                    Try out set operations
-                  </AccordionItemButton>
-                </AccordionItemHeading>
-                <AccordionItemPanel>
-                  <TryhardItem
-                    container={InputContainer}
-                    layout={layouts[numSets - 1]}
-                    value={setsOp}
-                    onChange={this.handleSetsOpChange}
-                    onEvaluate={this.handleSetsOpEval}
-                    onReset={this.handleReset}
-                  />
-                </AccordionItemPanel>
-              </AccordionItem>
-              <AccordionItem uuid="get-set-ops">
-                <AccordionItemHeading>
-                  <AccordionItemButton>
-                    Generate set operations based on the diagram
-                  </AccordionItemButton>
-                </AccordionItemHeading>
-                <AccordionItemPanel>
-                  <GeneratorItem
-                    container={InputContainer}
-                    value={setsOpGen}
-                    onGenerate={this.handleSetsOpGen}
-                    onReset={this.handleReset}
-                  />
-                </AccordionItemPanel>
-              </AccordionItem>
-            </Accordion>
-          </Half>
-          <Half key="right" left={20}>
-            <VennDiagram
-              containerSize={{ width: 600, height: 600 }}
-              setsCount={numSets}
-              selected={selected}
-              onSelected={this.handleElemSetsSelected}
-              color={color}
-            />
-          </Half>
-        </GridLayout>
+        <BrowserView>
+          <GridLayout
+            className="layout"
+            layout={layout}
+            cols={2}
+            rowHeight={1}
+            width={1200}
+          >
+            <Half key="left" left={0}>
+              {this.renderToolbar()}
+            </Half>
+            <Half key="right" left={20}>
+              {this.renderDiagram()}
+            </Half>
+          </GridLayout>
+        </BrowserView>
+        <MobileView>
+          {this.renderToolbar()}
+          {this.renderDiagram()}
+        </MobileView>
       </Layout>
     )
   }

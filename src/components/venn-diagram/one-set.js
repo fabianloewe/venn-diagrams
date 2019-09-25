@@ -3,6 +3,8 @@ import PropTypes from "prop-types";
 import { Group } from "@vx/group";
 import { CirclePath, RevertedCirclePath } from "./circle-path"
 
+const getElementalSet = (n, func) => [n, func(n)]
+
 export const OneSetDiagram = ({
   containerSize,
   radius,
@@ -11,18 +13,18 @@ export const OneSetDiagram = ({
   onClick = () => {}
 }) => {
   const elementalSets = [
-    [1, (
+    getElementalSet(1, number => (
       <CirclePath
         cx={containerSize.height / 2}
         cy={containerSize.width / 2}
         r={radius}
-        fill={selected.includes(1) ? color : "transparent"}
-        number={1}
-        onClick={event => onClick({ number: 1, event })}
-        isSelected={selected.includes(1)}
+        fill={selected.includes(number) ? color : "transparent"}
+        number={number}
+        onClick={event => onClick({ number, event })}
+        isSelected={selected.includes(number)}
       />
-    )],
-    [0, (
+    )),
+    getElementalSet(0, number => (
       <RevertedCirclePath
         cx={containerSize.height / 2}
         cy={containerSize.width / 2}
@@ -34,12 +36,12 @@ export const OneSetDiagram = ({
           { x: 10, y: 10 + containerSize.width - 20},
           { x: 10, y: 10 },
         ]}
-        fill={selected.includes(2) ? color : "transparent"}
-        number={2}
-        onClick={event => onClick({ number: 2, event })}
-        isSelected={selected.includes(2)}
+        fill={selected.includes(number) ? color : "transparent"}
+        number={number}
+        onClick={event => onClick({ number, event })}
+        isSelected={selected.includes(number)}
       />
-    )]
+    ))
   ]
 
   return (
