@@ -119,7 +119,7 @@ export default class VDInputReader {
         let set = substring.substring(startIndex, endIndex)
         if (set.match(setPattern) || set.match(setPattern2)) {
           let complement = this.extractSet(set)
-          complement.complement(new Set(this.vd.getOmega()))
+          complement.complement(this.vd.getOmega())
           this.negatedSets.set(xSetCount, complement)
           substring = (endIndex === substring.length) ? substring.substring(0, i) + "X" + xSetCount :
             substring.substring(0, i) + "X" + xSetCount + substring.substring(endIndex, substring.length)
@@ -134,7 +134,7 @@ export default class VDInputReader {
     let endIndex = this.indexForNextSet(0, substring)
     let helpSet = this.extractSet(substring.substring(0, endIndex))
     substring = substring.substring(endIndex)
-    while (substring.length) {
+    while (substring.length > 0) {
       let s = substring.substring(0, 1)
       endIndex = this.indexForNextSet(1, substring)
       switch (s) {
