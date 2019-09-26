@@ -8,6 +8,7 @@ const TryhardItem = props => (
         layout={props.layout}
         value={props.value}
         onChange={props.onChange}
+        onKeyPress={key => key === "{enter}" ? props.onEvaluate() : true}
       />
     </props.container>
     <props.container>

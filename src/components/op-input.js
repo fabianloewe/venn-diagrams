@@ -12,29 +12,34 @@ export const OpInput = ({
 }) => {
   const [keyboard, setKeyboard] = useState(null);
 
+  const layoutRegExp = layout
+    .map(row => row
+      .replace(/\s|{.*}/g, "")
+      .replace(/\(\)/g, "\\(\\)")
+    )
+    .join("");
+  const inputPattern = new RegExp(`\\s[${layoutRegExp}]`, "g");
+  console.log(inputPattern)
+
   const onChangeInput = event => {
-    const input = event.target.value + " ";
-    console.log("new input:", input);
+    const input = event.target.value;
+    if (!input.match(inputPattern)) return;
     onChange(input);
     keyboard.setInput(input);
   };
-
-  const inputPattern = new RegExp(
-    "[\\s" + layout.map(row => row.replace(/\s/g, "")).join("") + "]"
-  );
-  console.log(inputPattern);
 
   useEffect(() => {
     if (window) {
       import("simple-keyboard").then(KeyboardClass => {
         const Keyboard = KeyboardClass.default
 
-        setKeyboard(new Keyboard({
+        const keyboard = new Keyboard({
           onChange,
           onKeyPress,
           layout: { "default": layout},
-          inputPattern,
-        }));
+        });
+        keyboard.setInput(value);
+        setKeyboard(keyboard);
       });
     }
   }, [layout]);
@@ -48,6 +53,7 @@ export const OpInput = ({
         value={value}
         placeholder={"Tap on the virtual keyboard to start"}
         onChange={onChangeInput}
+        //disabled={true}
       />
       <div className="simple-keyboard" />
     </div>

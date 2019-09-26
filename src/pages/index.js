@@ -81,6 +81,7 @@ class IndexPage extends React.Component {
         numSets: value,
         inputReader: new VDInputReader(value),
         inputGen: new VDInputGenerator(value),
+        selected: [],
       });
     } else {
       this.setState({
@@ -91,8 +92,8 @@ class IndexPage extends React.Component {
 
   handleSetsOpChange = text => this.setState({ setsOp: text })
 
-  handleSetsOpEval = () => {
-    const { inputReader, setsOp } = this.state;
+  handleSetsOpEval = () => this.setState(state => {
+    const { inputReader, setsOp } = state;
     let input = setsOp.replace(/⋂/g, "n");
     input = input.replace(/⋃/g, "u");
     input = input.replace(/∖/g, "-");
@@ -100,14 +101,14 @@ class IndexPage extends React.Component {
     input = input.replace(/Ω/g, "o");
 
     try {
-      this.setState({
+      return {
         selected: inputReader.readInput(input).getSet(),
-      });
+      };
     } catch (e) {
       toast.error(e.toString());
       console.error(e);
     }
-  }
+  })
 
   handleReset = () => this.setState({ selected: [] })
 
