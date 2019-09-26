@@ -96,8 +96,8 @@ export default class Set {
 	 * @param set2 - the other set
 	 */
 	subtract(set2: Set): void {
-		let set2a = set2.getSet();
-		let result = [];
+		const set2a = set2.getSet();
+		const result = [];
 		if (set2a.length === 0) return;
 		outer:
 		for(let j=0; j<this.set.length; j++) {

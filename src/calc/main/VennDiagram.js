@@ -77,35 +77,35 @@ export default class VennDiagram {
 	}
 
 	getOmega(): Set {
-		if(this.omega != null)
+		if(this.omega !== null)
 			return this.omega;
 		else
 			throw new Error("omega is null");
 	}
 
 	getA(): Set {
-		if (this.a != null)
+		if (this.a !== null)
 			return this.a;
 		else
 			throw new Error("a is null");
 	}
 
 	getB(): Set {
-		if (this.b != null)
+		if (this.b !== null)
 			return this.b;
 		else
 			throw new Error("b is null");
 	}
 
 	getC(): Set {
-		if (this.c != null)
+		if (this.c !== null)
 			return this.c;
 		else
 			throw new Error("c is null");
 	}
 
 	getD(): Set {
-		if (this.d != null)
+		if (this.d !== null)
 			return this.d;
 		else
 			throw new Error("d is null");
