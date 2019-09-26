@@ -26,7 +26,8 @@ export const FourSetsDiagram = ({
           d={
             `M500,250 ` +
             `A${radius},${radius / 2} -40 0,0 300,275 ` +
-            `A${radius},${radius / 2} -40 0,1 350,300 ` +
+            `Q300,275 340,310 ` +
+            //`A${radius},${radius / 2} -40 0,1 350,300 ` +
             `A${radius},${radius / 2} -40 0,1 500,250 Z`
           }
           fill={selected.includes(number) ? color : "transparent"}
@@ -100,7 +101,8 @@ export const FourSetsDiagram = ({
           d={
             `M100,250 ` +
             `A${radius},${radius / 2} 40 0,1 300,275 ` +
-            `A${radius},${radius / 2} 40 0,0 250,300 ` +
+            //`A${radius},${radius / 2} 40 0,0 250,300 ` +
+            `Q270,300 260,310 ` +
             `A${radius},${radius / 2} 40 0,0 100,250 Z`
           }
           fill={selected.includes(number) ? color : "transparent"}
@@ -123,10 +125,10 @@ export const FourSetsDiagram = ({
         <path
           d={
             `M300,275 ` +
-            `A${radius},${radius / 2} 40 0,0 250,300 ` +
+            `Q270,300 260,310 ` +
             `A${radius},${radius / 2} 40 0,1 300,350 ` +
-            `A${radius},${radius / 2} -40 0,1 350,300 ` +
-            `A${radius},${radius / 2} -40 0,0 300,275 Z`
+            `A${radius},${radius / 2} -40 0,1 340,310 ` +
+            `Q300,275 300,275Z`
           }
           fill={selected.includes(number) ? color : "transparent"}
           stroke="black"
@@ -149,7 +151,7 @@ export const FourSetsDiagram = ({
           d={
             `M500,250 ` +
             `A${radius},${radius / 2} -40 0,1 400,425 ` +
-            `A${radius},${radius / 2} 40 0,0 350,300 ` +
+            `A${radius},${radius / 2} 40 0,0 340,310 ` +
             `A${radius},${radius / 2} -40 0,1 500,250 Z`
           }
           fill={selected.includes(number) ? color : "transparent"}
@@ -173,7 +175,8 @@ export const FourSetsDiagram = ({
           d={
             `M350,475 ` +
             `A${radius},${radius / 2} 40 0,0 400,425 ` +
-            `A${radius},${radius / 2} 40 0,1 350,450 ` +
+            //`A${radius},${radius / 2} 40 0,1 350,455 ` +
+            `Q350,460 350,455 ` +
             `A${radius},${radius / 2} -40 0,1 350,475 Z`
           }
           fill={selected.includes(number) ? color : "transparent"}
@@ -222,7 +225,7 @@ export const FourSetsDiagram = ({
           d={
             `M250,475 ` +
             `A${radius},${radius / 2} -40 0,1 200,425 ` +
-            `A${radius},${radius / 2} -40 0,0 250,450 ` +
+            `Q250,460 250,455 ` +
             `A${radius},${radius / 2} 40 0,1 250,475 Z`
           }
           fill={selected.includes(number) ? color : "transparent"}
@@ -246,7 +249,7 @@ export const FourSetsDiagram = ({
           d={
             `M100,250 ` +
             `A${radius},${radius / 2} 40 0,0 200,425 ` +
-            `A${radius},${radius / 2} -40 0,1 250,300 ` +
+            `A${radius},${radius / 2} -40 0,1 260,310 ` +
             `A${radius},${radius / 2} 40 0,0 100,250 Z`
           }
           fill={selected.includes(number) ? color : "transparent"}
@@ -268,11 +271,12 @@ export const FourSetsDiagram = ({
       <g>
         <path
           d={
-            `M350,450 ` +
-            `A${radius},${radius / 2} 40 0,0 400,425 ` +
-            `A${radius},${radius / 2} 40 0,0 350,300 ` +
+            `M350,455 ` +
+            //`A${radius},${radius / 2} 40 0,0 400,425 ` +
+            `Q350,460 400,425 ` +
+            `A${radius},${radius / 2} 40 0,0 340,310 ` +
             `A${radius},${radius / 2} -40 0,0 300,350 ` +
-            `A${radius},${radius / 2} 40 0,1 350,450 Z`
+            `A${radius},${radius / 2} 40 0,1 350,455 Z`
           }
           fill={selected.includes(number) ? color : "transparent"}
           stroke="black"
@@ -294,8 +298,9 @@ export const FourSetsDiagram = ({
         <path
           d={
             `M350,475 ` +
-            `A${radius},${radius / 2} 40 0,0 350,450 ` +
-            `A${radius},${radius / 2} 40 0,1 300,475 ` +
+            `A${radius},${radius / 2} 40 0,0 350,455 ` +
+            //`A${radius},${radius / 2} 40 0,1 300,475 ` +
+            `Q325,470 300,475 ` +
             `A${radius},${radius / 2} 40 0,0 350,475 Z`
           }
           fill={selected.includes(number) ? color : "transparent"}
@@ -318,8 +323,10 @@ export const FourSetsDiagram = ({
         <path
           d={
             `M250,475 ` +
-            `A${radius},${radius / 2} -40 0,0 250,450 ` +
-            `A${radius},${radius / 2} -40 0,0 300,475 ` +
+            //`A${radius},${radius / 2} -40 0,0 250,455 ` +
+            `Q250,450 250,455 ` +
+            //`A${radius},${radius / 2} -40 0,0 300,475 ` +
+            `Q275,470 300,475 ` +
             `A${radius},${radius / 2} -40 0,1 250,475 Z`
           }
           fill={selected.includes(number) ? color : "transparent"}
@@ -341,9 +348,10 @@ export const FourSetsDiagram = ({
       <g>
         <path
           d={
-            `M250,450 ` +
-            `A${radius},${radius / 2} -40 0,1 200,425 ` +
-            `A${radius},${radius / 2} -40 0,1 250,300 ` +
+            `M250,455 ` +
+            //`A${radius},${radius / 2} -40 0,1 200,425 ` +
+            `Q250,460 200,425 ` +
+            `A${radius},${radius / 2} -40 0,1 260,310 ` +
             `A${radius},${radius / 2} 40 0,1 300,350 ` +
             `A${radius},${radius / 2} -40 0,0 250,450 Z`
           }
@@ -367,9 +375,11 @@ export const FourSetsDiagram = ({
         <path
           d={
             `M300,350 ` +
-            `A${radius},${radius / 2} -40 0,0 250,450 ` +
-            `A${radius},${radius / 2} -40 0,0 300,475 ` +
-            `A${radius},${radius / 2} 40 0,0 350,450 ` +
+            `A${radius},${radius / 2} -40 0,0 250,455 ` +
+            //`A${radius},${radius / 2} -40 0,0 300,475 ` +
+            `Q275,470 300,475 ` +
+            //`A${radius},${radius / 2} 40 0,0 350,450 ` +
+            `Q325,470 350,455 ` +
             `A${radius},${radius / 2} 40 0,0 300,350 Z`
           }
           fill={selected.includes(number) ? color : "transparent"}
@@ -426,7 +436,7 @@ export const FourSetsDiagram = ({
       <Group className="venn-diagram-sets">
         {elementalSets.map(([_, path]) => path)}
       </Group>
-      {/*<Raster {...containerSize} />*/}
+      {/*<Raster distance={10} {...containerSize} />*/}
     </Group>
   )
 }

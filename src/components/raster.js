@@ -3,20 +3,20 @@ import PropTypes from "prop-types";
 import { Group } from "@vx/group";
 import { Line, Circle } from "@vx/shape";
 
-const Raster = ({ width, height }) => {
+const Raster = ({ width, height, distance = 25 }) => {
   const yAxes = [];
-  for (let i = 0; i < width; i += 25) {
+  for (let i = 0; i < width; i += distance) {
     yAxes.push([{ x: i, y: 0 }, { x: i, y: height }]);
   }
 
   const xAxes = [];
-  for (let i = 0; i < height; i += 25) {
+  for (let i = 0; i < height; i += distance) {
     xAxes.push([{ x: 0, y: i }, { x: width, y: i }]);
   }
 
   const points = [], [radii, setRadii] = useState([]);
-  for (let i = 0; i < width; i += 25) {
-    for (let j = 0; j < height; j += 25) {
+  for (let i = 0; i < width; i += distance) {
+    for (let j = 0; j < height; j += distance) {
       radii.push(2);
       points.push({ x: i, y: j });
     }
@@ -51,6 +51,7 @@ const Raster = ({ width, height }) => {
 Raster.propTypes = {
   width: PropTypes.number.isRequired,
   height: PropTypes.number.isRequired,
+  distance: PropTypes.number,
 };
 
 export default Raster;
