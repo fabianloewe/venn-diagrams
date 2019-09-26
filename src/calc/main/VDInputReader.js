@@ -88,7 +88,10 @@ export default class VDInputReader {
         evaluated = false
       }
     }
-    this.markedAreas = this.helpSets.get(this.helpSetCount)
+    const tmpMarkedAreas = this.helpSets.get(this.helpSetCount);
+    if (tmpMarkedAreas) this.markedAreas = tmpMarkedAreas;
+    else throw new Error("Could not find a help set for "+this.helpSetCount);
+
     this.logResult(this.markedAreas)
     console.log("Completed input reading.")
     return this.markedAreas
@@ -204,13 +207,17 @@ export default class VDInputReader {
     const xNumberPattern = /[X][\d]+/
     if (string.match(xNumberPattern)) {
       let i = Number.parseInt(string.substring(1, string.length))
-      return this.negatedSets.get(i)
+      const result = this.negatedSets.get(i)
+      if (result) return result;
+      else throw new Error("Could not find a negated set for " + i);
     }
 
     const numberPattern = /[\d]+/
     if (string.match(numberPattern)) {
       let i = Number.parseInt(string)
-      return this.helpSets.get(i)
+      const result = this.helpSets.get(i);
+      if (result) return result;
+      else throw new Error("Could not find a negated set for " + i);
     }
 
     switch (string) {

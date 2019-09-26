@@ -72,40 +72,43 @@ export default class VennDiagram {
 		else throw new Error("only 1-4 Sets allowed");
 	}
 
-	getAllSets(): ?Set[] {
-		return this.allSets;
+	getAllSets(): Set[] {
+		if(this.allSets !== null && this.allSets !== undefined)
+			return this.allSets;
+		else
+			throw new Error("allSets is null");
 	}
 
 	getOmega(): Set {
-		if(this.omega !== null)
+		if(this.omega !== null && this.omega !== undefined)
 			return this.omega;
 		else
 			throw new Error("omega is null");
 	}
 
 	getA(): Set {
-		if (this.a !== null)
+		if (this.a !== null && this.a !== undefined)
 			return this.a;
 		else
 			throw new Error("a is null");
 	}
 
 	getB(): Set {
-		if (this.b !== null)
+		if (this.b !== null && this.b !== undefined)
 			return this.b;
 		else
 			throw new Error("b is null");
 	}
 
 	getC(): Set {
-		if (this.c !== null)
+		if (this.c !== null && this.c !== undefined)
 			return this.c;
 		else
 			throw new Error("c is null");
 	}
 
 	getD(): Set {
-		if (this.d !== null)
+		if (this.d !== null && this.d !== undefined)
 			return this.d;
 		else
 			throw new Error("d is null");

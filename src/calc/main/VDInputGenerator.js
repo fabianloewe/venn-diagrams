@@ -15,6 +15,7 @@ export default class VDInputGenerator {
 	vd: VennDiagram;
 	allSets: Map<number, Set> = new Map();
 	numberOfSets: number;
+	case6Counter = 0;
 
 	constructor(numberOfSets: number = 2) {
 		this.vd = new VennDiagram(numberOfSets);
@@ -75,7 +76,9 @@ export default class VDInputGenerator {
 					curSets = new Array(allSetsSize);
 					for(let i=0; i<now.length; i++) {
 						if(now[i] === 1) {
-							help1.merge(this.allSets.get(i));
+							const tmpSet = this.allSets.get(i);
+							if (tmpSet) help1.merge(tmpSet);
+							else throw new Error(`Set at ${i} is undefined`);
 							curSets[i] = true;
 						}
 					}
@@ -115,7 +118,9 @@ export default class VDInputGenerator {
 					curSets = new Array(allSetsSize);
 					for(let i=0; i<now2.length; i++) {
 						if(now2[i] === 1) {
-							help1.subtract(this.allSets.get(i));
+							const tmpSet = this.allSets.get(i);
+							if (tmpSet) help1.subtract(tmpSet);
+							else throw new Error(`Set at ${i} is undefined`);
 							curSets[i] = true;
 						}
 					}
@@ -153,7 +158,9 @@ export default class VDInputGenerator {
 					curSets = new Array(allSetsSize);
 					for(let i=0; i<now3.length; i++) {
 						if(now3[i] === 1) {
-							help1.intersect(this.allSets.get(i));
+							const tmpSet = this.allSets.get(i);
+							if (tmpSet) help1.intersect(tmpSet);
+							else throw new Error(`Set at ${i} is undefined`);
 							curSets[i] = true;
 						}
 					}
@@ -193,16 +200,20 @@ export default class VDInputGenerator {
 					for(let i=0; i<now4.length; i++) {
 						if(now4[i] === 1) {
 							if (isNullOrUndefined(help2)) {
-								help2 = this.allSets.get(i).clone();
+								const tmpSet = this.allSets.get(i);
+								if (tmpSet) help2 = tmpSet.clone();
+								else throw new Error(`Set at ${i} is undefined`);
 							}
 							else {
-								help2.intersect(this.allSets.get(i));
+								const tmpSet = this.allSets.get(i);
+								if (help2 && tmpSet) help2.intersect(tmpSet);
+								else throw new Error(`Set at ${i} is undefined or help2 is undefined`);
 							}
 							curSets[i] = true;
 						}
 					}
 					if(isNullOrUndefined(help2)) help2 = new Set(new Array(0));
-					help1.subtract(help2);
+					help2 && help1.subtract(help2);
 					if(help1.equals(s)) {
 						curBest[step] = help1.clone();
 						curBestSets = curSets.slice(0);
@@ -242,16 +253,20 @@ export default class VDInputGenerator {
 					for(let i=0; i<now5.length; i++) {
 						if(now5[i] === 1) {
 							if (isNullOrUndefined(help2)) {
-								help2 = this.allSets.get(i).clone();
+								const tmpSet = this.allSets.get(i);
+								if (tmpSet) help2 = tmpSet.clone();
+								else throw new Error(`Set at ${i} is undefined`);
 							}
 							else {
-								help2.subtract(this.allSets.get(i));
+								const tmpSet = this.allSets.get(i);
+								if (help2 && tmpSet) help2.intersect(tmpSet);
+								else throw new Error(`Set at ${i} is undefined or help2 is undefined`);
 							}
 							curSets[i] = true;
 						}
 					}
 					if(isNullOrUndefined(help2)) help2 = new Set(new Array(0));
-					help1.intersect(help2);
+					help2 && help1.intersect(help2);
 					if(help1.equals(s)) {
 						curBest[step] = help1.clone();
 						curBestSets = curSets.slice(0);
@@ -299,9 +314,14 @@ export default class VDInputGenerator {
 					s1 = this.generateInput(new Set([remainder.getSet()[i]]));
 					sb += "-(" + s1 + ")";
 				}
-				break;
+				this.case6Counter++;
+				if (this.case6Counter < 100) break;
 			default:
-				throw new Error("NO!");
+				this.case6Counter=0;
+				throw new Error(
+					"Sorry, this shouldn't happen! " +
+					"Please leave us some information about what you did."
+				);
 			}
 
 
