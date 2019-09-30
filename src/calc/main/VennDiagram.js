@@ -81,35 +81,35 @@ export default class VennDiagram {
 
 	getOmega(): Set {
 		if(this.omega !== null && this.omega !== undefined)
-			return this.omega;
+			return this.omega.clone();
 		else
 			throw new Error("omega is null");
 	}
 
 	getA(): Set {
 		if (this.a !== null && this.a !== undefined)
-			return this.a;
+			return this.a.clone();
 		else
 			throw new Error("a is null");
 	}
 
 	getB(): Set {
 		if (this.b !== null && this.b !== undefined)
-			return this.b;
+			return this.b.clone();
 		else
 			throw new Error("b is null");
 	}
 
 	getC(): Set {
 		if (this.c !== null && this.c !== undefined)
-			return this.c;
+			return this.c.clone();
 		else
 			throw new Error("c is null");
 	}
 
 	getD(): Set {
 		if (this.d !== null && this.d !== undefined)
-			return this.d;
+			return this.d.clone();
 		else
 			throw new Error("d is null");
 	}

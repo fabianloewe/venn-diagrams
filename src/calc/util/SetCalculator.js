@@ -9,7 +9,7 @@
  *
  */
 export default class SetCalculator {
-	
+
 	static intersect(x: Array<number>, y: Array<number>): Array<number> {
 		let xc = x.slice(0);
 		let yc = y.slice(0);
