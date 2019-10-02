@@ -18,12 +18,13 @@ export const OpInput = ({
       .replace(/\(\)/g, "\\(\\)")
     )
     .join("");
-  const inputPattern = new RegExp(`\\s[${layoutRegExp}]`, "g");
+  const inputPattern = new RegExp(`\\s|[${layoutRegExp}]`, "g");
   console.log(inputPattern)
 
   const onChangeInput = event => {
     const input = event.target.value;
-    if (!input.match(inputPattern)) return;
+    const matchResult = input.match(inputPattern);
+    if (matchResult !== null && matchResult.join("") !== input) return;
     onChange(input);
     keyboard.setInput(input);
   };
