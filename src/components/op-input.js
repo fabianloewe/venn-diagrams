@@ -9,6 +9,7 @@ export const OpInput = ({
   value,
   onChange,
   onKeyPress,
+  texts,
 }) => {
   const [keyboard, setKeyboard] = useState(null);
 
@@ -52,7 +53,7 @@ export const OpInput = ({
         id="sets-op"
         type="text"
         value={value}
-        placeholder={"Tap on the virtual keyboard to start"}
+        placeholder={texts.input}
         onChange={onChangeInput}
         //disabled={true}
       />
@@ -67,6 +68,9 @@ OpInput.propTypes = {
   value: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
   onKeyPress: PropTypes.func,
+  texts: PropTypes.shape({
+    input: PropTypes.string,
+  })
 };
 
 export default OpInput;

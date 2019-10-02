@@ -1,0 +1,18 @@
+lang: de
+disclaimer: "Info: Das rechte Element ist die erste Menge A."
+settingsItem:
+  button: Passe Einstellungen des Diagramms an
+  menu:
+    numOfSets: Anzahl der Mengen
+    color: Farbe
+tryHardItem:
+  button: Probiere Mengenoperationen aus
+  menu:
+    input: Tippe auf die virtuelle Tastatur um zu beginnen
+    eval: Auswerten
+    reset: Zurücksetzen
+generatorItem:
+  button: Generiere Mengenoperationen basierend auf dem Diagramm
+  menu:
+    gen: Generieren
+    reset: Zurücksetzen

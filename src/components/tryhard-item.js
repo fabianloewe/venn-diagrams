@@ -9,6 +9,7 @@ const TryhardItem = props => (
         value={props.value}
         onChange={props.onChange}
         onKeyPress={key => key === "{enter}" ? props.onEvaluate() : true}
+        texts={props.texts}
       />
     </props.container>
     <props.container>
@@ -16,13 +17,13 @@ const TryhardItem = props => (
         className="primary"
         type="button"
         id="sets-op-eval"
-        value="Evaluate"
+        value={props.texts.eval}
         onClick={props.onEvaluate}
       />
       <input
         type="button"
         id="sets-reset"
-        value="Reset"
+        value={props.texts.reset}
         onClick={props.onReset}
       />
     </props.container>

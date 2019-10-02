@@ -16,13 +16,13 @@ const GeneratorItem = props => (
         className="primary"
         type="button"
         id="sets-op-gen"
-        value="Generate"
+        value={props.texts.gen}
         onClick={props.onGenerate}
       />
       <input
         type="button"
         id="sets-op-reset-gen"
-        value="Reset"
+        value={props.texts.reset}
         onClick={props.onReset}
       />
     </props.container>

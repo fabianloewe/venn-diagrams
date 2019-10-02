@@ -11,6 +11,9 @@ const Header = ({ siteTitle }) => (
   >
     <div
       style={{
+        display: `flex`,
+        alignItems: `baseline`,
+         justifyContent: `space-between`,
         margin: `0 auto`,
         maxWidth: 960,
         padding: `1.45rem 1.0875rem`,
@@ -27,6 +30,30 @@ const Header = ({ siteTitle }) => (
           {siteTitle}
         </Link>
       </h1>
+      <div style={{ display: "inline" }}>
+        <span style={{ paddingRight: "10px" }}>
+          <Link
+            to="/en/"
+            style={{
+              color: `white`,
+              textDecoration: `none`,
+            }}
+          >
+            EN
+          </Link>
+        </span>
+        <span>
+          <Link
+            to="/de/"
+            style={{
+              color: `white`,
+              textDecoration: `none`,
+            }}
+          >
+            DE
+          </Link>
+        </span>
+      </div>
     </div>
   </header>
 )

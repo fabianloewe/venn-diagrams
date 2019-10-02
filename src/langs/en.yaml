@@ -1,0 +1,18 @@
+lang: en
+disclaimer: "Disclaimer: The most right element is the first set A."
+settingsItem:
+  button: Adjust diagram settings
+  menu:
+    numOfSets: Number of sets
+    color: Color
+tryHardItem:
+  button: Try out set operations
+  menu:
+    input: Tap on the virtual keyboard to start
+    eval: Evaluate
+    reset: Reset
+generatorItem:
+  button: Generate set operations based on the diagram
+  menu:
+    gen: Generate
+    reset: Reset
