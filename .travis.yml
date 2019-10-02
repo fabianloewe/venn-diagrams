@@ -11,12 +11,14 @@ script:
   - SERVER_PID=$!
   - yarn desktop
   - kill $SERVER_PID
+before_deploy:
+  - zip -1r build-desktop/venn-diagrams-$TRAVIS_OS_NAME-x64.zip build-desktop/venn-diagrams-$TRAVIS_OS_NAME-x64
 deploy:
   provider: releases
   api_key:
     secure: TjXVCFh0DvZz5zBgz1l+W3ctZi1wKNFmEHntcmtTAfDj+qvzGvPzISzRCx6l8OHJrM2xmz8MbdN5TpzvC8wDesCxFOOhhMRTaJeWe2RnHC60ya0j+gurmB3JkrYdGdDy87B9H8u8dKlN00Dv/XCeji8bvE6IZhTRpMGVfrnf2CntROHQZwDjaQwIye5nkNUdMnqyxZas7ST+xDs+p5zIRyRkB8bgSKw/wkTzgE8KClyDe0v5W9Zz/jp6X0mfuZgtrga7Cwx+IHs5nqZTiCFNuVYWukzXkm2oHtunZnyDeTuuTnnCtGSFkIbymQRBiS2cu10NF9+v7YvzHmuxKm9e5XW9PQqamrgqrpttwnV0s4xKhXvT1nbnUVN5+CeMVkMB6+azd+vFldMwS7NOull9Xtl4fEkpW/2anEeLq79Xj8HFk6o5RTV8Bcbu9hPfsh7mq9lWfQ5tiJHwgNETQxWIlo/IFaRO/h+BDKaC5QjupZJ5aBnIn07o38zoMpBSGwbjAwioTQdqoYZIMKWR+qRk8WCyg3+9iaPboiAkPOGUqXzUyV0feLsz1CEaAVBaJxWkOK++kb5eAUdvHL+s4Ts9a/rDrYF9Uci2CNVeebaMMVaYQhyRMFsfmEUI47juJbZZ7on/eE8RVphltyTqzvwGnUcgeMvkLD2Ny4ePpqqf6Aw=
   file_glob: true
-  file: build-desktop/**
+  file: build-desktop/*.zip
   skip_cleanup: true
   on:
     tags: true
