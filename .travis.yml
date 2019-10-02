@@ -1,14 +1,16 @@
 language: node_js
 node_js:
-- stable
+  - stable
 os:
   - linux
   - osx
   - windows
 script:
   - yarn build
-  - yarn serve
+  - yarn serve &
+  - SERVER_PID=$!
   - yarn desktop
+  - kill $SERVER_PID
 deploy:
   provider: releases
   api_key:
