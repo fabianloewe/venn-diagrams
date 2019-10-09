@@ -18,6 +18,7 @@ export const OneSetDiagram = ({
         cx={containerSize.height / 2}
         cy={containerSize.width / 2}
         r={radius}
+        color={color}
         fill={selected.includes(number) ? color : "transparent"}
         onClick={event => onClick({ number, event })}
         isSelected={selected.includes(number)}
@@ -35,6 +36,7 @@ export const OneSetDiagram = ({
           { x: 10, y: 10 + containerSize.width - 20},
           { x: 10, y: 10 },
         ]}
+        color={color}
         fill={selected.includes(number) ? color : "transparent"}
         onClick={event => onClick({ number, event })}
         isSelected={selected.includes(number)}

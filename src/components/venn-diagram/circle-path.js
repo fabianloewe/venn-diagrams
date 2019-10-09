@@ -27,6 +27,7 @@ export const CirclePath = ({
   number,
   isSelected,
   fill,
+  color,
   ...otherProps
 }) => (
   <Group className="elemental-set">
@@ -40,7 +41,7 @@ export const CirclePath = ({
     <UnselectableText
       x={cx}
       y={cy}
-      fill={isSelected ? "white" : "black"}
+      fill={isSelected ? "white" : color}
     >
       A
     </UnselectableText>
