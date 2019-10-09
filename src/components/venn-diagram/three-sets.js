@@ -60,7 +60,7 @@ export const ThreeSetsDiagram = ({
           y={intersect23[2]}
           fill={selected.includes(number) ? "white" : color}
         >
-         {number}
+         A
         </UnselectableText>
       </g>
     )),
@@ -86,7 +86,7 @@ export const ThreeSetsDiagram = ({
           y={intersect13[3] + radius / 2}
           fill={selected.includes(number) ? "white" : color}
         >
-         {number}
+         B
         </UnselectableText>
       </g>
     )),
@@ -112,7 +112,7 @@ export const ThreeSetsDiagram = ({
           y={intersect12[2] - radius / 2}
           fill={selected.includes(number) ? "white" : color}
         >
-         {number}
+         C
         </UnselectableText>
       </g>
     )),
@@ -133,13 +133,6 @@ export const ThreeSetsDiagram = ({
           strokeWidth="2px"
           onClick={event => onClick({ number, event })}
         />
-        <UnselectableText
-          x={intersect12[1] - radius / 4}
-          y={intersect12[3] - radius / 4}
-          fill={selected.includes(number) ? "white" : color}
-        >
-         {number}
-        </UnselectableText>
       </g>
     )),
     getElementalSet(5, number => (
@@ -159,13 +152,6 @@ export const ThreeSetsDiagram = ({
           strokeWidth="2px"
           onClick={event => onClick({ number, event })}
         />
-        <UnselectableText
-          x={intersect23[1] + radius / 4}
-          y={intersect23[3]}
-          fill={selected.includes(number) ? "white" : color}
-        >
-         {number}
-        </UnselectableText>
       </g>
     )),
     getElementalSet(6, number => (
@@ -185,13 +171,6 @@ export const ThreeSetsDiagram = ({
           strokeWidth="2px"
           onClick={event => onClick({ number, event })}
         />
-        <UnselectableText
-          x={intersect13[0] - radius / 4}
-          y={intersect13[2] + radius / 4}
-          fill={selected.includes(number) ? "white" : color}
-        >
-         {number}
-        </UnselectableText>
       </g>
     )),
     getElementalSet(7, number => (
@@ -211,13 +190,6 @@ export const ThreeSetsDiagram = ({
           strokeWidth="2px"
           onClick={event => onClick({ number, event })}
         />
-        <UnselectableText
-          x={intersect23[0] - radius / 2}
-          y={intersect23[2]}
-          fill={selected.includes(number) ? "white" : color}
-        >
-         {number}
-        </UnselectableText>
       </g>
     )),
     getElementalSet(0, number => (
@@ -251,13 +223,6 @@ export const ThreeSetsDiagram = ({
           strokeWidth="2px"
           onClick={event => onClick({ number, event })}
         />
-        <UnselectableText
-          x={30}
-          y={30}
-          fill={selected.includes(number) ? "white" : color}
-        >
-         {number}
-        </UnselectableText>
       </g>
     )),
   ]

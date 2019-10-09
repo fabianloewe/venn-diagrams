@@ -37,15 +37,13 @@ export const CirclePath = ({
       fill={fill}
       {...otherProps}
     />
-    {number !== undefined && (
-      <UnselectableText
-        x={cx}
-        y={cy}
-        fill={isSelected ? "white" : "black"}
-      >
-        {number}
-      </UnselectableText>
-    )}
+    <UnselectableText
+      x={cx}
+      y={cy}
+      fill={isSelected ? "white" : "black"}
+    >
+      A
+    </UnselectableText>
   </Group>
 )
 
@@ -77,15 +75,6 @@ export const RevertedCirclePath = ({
       fill={fill}
       {...otherProps}
     />
-    {number !== undefined && (
-      <UnselectableText
-        x={rectPoints[0].x + 30}
-        y={rectPoints[0].x + 30}
-        fill={isSelected ? "white" : "black"}
-      >
-        {number}
-      </UnselectableText>
-    )}
   </Group>
 )
 

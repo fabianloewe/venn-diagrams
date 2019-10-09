@@ -41,7 +41,7 @@ export const FourSetsDiagram = ({
           fill={selected.includes(number) ? "white" : color}
           onClick={event => onClick({ number, event })}
         >
-         {number}
+         A
         </UnselectableText>
       </g>
     )),
@@ -66,7 +66,7 @@ export const FourSetsDiagram = ({
           fill={selected.includes(number) ? "white" : color}
           onClick={event => onClick({ number, event })}
         >
-         {number}
+         B
         </UnselectableText>
       </g>
     )),
@@ -91,7 +91,7 @@ export const FourSetsDiagram = ({
           fill={selected.includes(number) ? "white" : color}
           onClick={event => onClick({ number, event })}
         >
-         {number}
+         C
         </UnselectableText>
       </g>
     )),
@@ -116,7 +116,7 @@ export const FourSetsDiagram = ({
           fill={selected.includes(number) ? "white" : color}
           onClick={event => onClick({ number, event })}
         >
-         {number}
+         D
         </UnselectableText>
       </g>
     )),
@@ -135,14 +135,6 @@ export const FourSetsDiagram = ({
           strokeWidth="2px"
           onClick={event => onClick({ number, event })}
         />
-        <UnselectableText
-          x={295}
-          y={310}
-          fill={selected.includes(number) ? "white" : color}
-          onClick={event => onClick({ number, event })}
-        >
-         {number}
-        </UnselectableText>
       </g>
     )),
     getElementalSet(6, number => (
@@ -159,14 +151,6 @@ export const FourSetsDiagram = ({
           strokeWidth="2px"
           onClick={event => onClick({ number, event })}
         />
-        <UnselectableText
-          x={420}
-          y={330}
-          fill={selected.includes(number) ? "white" : color}
-          onClick={event => onClick({ number, event })}
-        >
-         {number}
-        </UnselectableText>
       </g>
     )),
     getElementalSet(7, number => (
@@ -184,14 +168,6 @@ export const FourSetsDiagram = ({
           strokeWidth="2px"
           onClick={event => onClick({ number, event })}
         />
-        <UnselectableText
-          x={355}
-          y={470}
-          fill={selected.includes(number) ? "white" : color}
-          onClick={event => onClick({ number, event })}
-        >
-         {number}
-        </UnselectableText>
       </g>
     )),
     getElementalSet(8, number => (
@@ -209,14 +185,6 @@ export const FourSetsDiagram = ({
           strokeWidth="2px"
           onClick={event => onClick({ number, event })}
         />
-        <UnselectableText
-          x={295}
-          y={510}
-          fill={selected.includes(number) ? "white" : color}
-          onClick={event => onClick({ number, event })}
-        >
-         {number}
-        </UnselectableText>
       </g>
     )),
     getElementalSet(9, number => (
@@ -233,14 +201,6 @@ export const FourSetsDiagram = ({
           strokeWidth="2px"
           onClick={event => onClick({ number, event })}
         />
-        <UnselectableText
-          x={220}
-          y={465}
-          fill={selected.includes(number) ? "white" : color}
-          onClick={event => onClick({ number, event })}
-        >
-         {number}
-        </UnselectableText>
       </g>
     )),
     getElementalSet(10, number => (
@@ -257,14 +217,6 @@ export const FourSetsDiagram = ({
           strokeWidth="2px"
           onClick={event => onClick({ number, event })}
         />
-        <UnselectableText
-          x={170}
-          y={330}
-          fill={selected.includes(number) ? "white" : color}
-          onClick={event => onClick({ number, event })}
-        >
-         {number}
-        </UnselectableText>
       </g>
     )),
     getElementalSet(11, number => (
@@ -283,14 +235,6 @@ export const FourSetsDiagram = ({
           strokeWidth="2px"
           onClick={event => onClick({ number, event })}
         />
-        <UnselectableText
-          x={350}
-          y={400}
-          fill={selected.includes(number) ? "white" : color}
-          onClick={event => onClick({ number, event })}
-        >
-         {number}
-        </UnselectableText>
       </g>
     )),
     getElementalSet(12, number => (
@@ -308,14 +252,6 @@ export const FourSetsDiagram = ({
           strokeWidth="2px"
           onClick={event => onClick({ number, event })}
         />
-        <UnselectableText
-          x={330}
-          y={475}
-          fill={selected.includes(number) ? "white" : color}
-          onClick={event => onClick({ number, event })}
-        >
-         {number}
-        </UnselectableText>
       </g>
     )),
     getElementalSet(13, number => (
@@ -334,14 +270,6 @@ export const FourSetsDiagram = ({
           strokeWidth="2px"
           onClick={event => onClick({ number, event })}
         />
-        <UnselectableText
-          x={250}
-          y={475}
-          fill={selected.includes(number) ? "white" : color}
-          onClick={event => onClick({ number, event })}
-        >
-         {number}
-        </UnselectableText>
       </g>
     )),
     getElementalSet(14, number => (
@@ -360,14 +288,6 @@ export const FourSetsDiagram = ({
           strokeWidth="2px"
           onClick={event => onClick({ number, event })}
         />
-        <UnselectableText
-          x={225}
-          y={400}
-          fill={selected.includes(number) ? "white" : color}
-          onClick={event => onClick({ number, event })}
-        >
-         {number}
-        </UnselectableText>
       </g>
     )),
     getElementalSet(15, number => (
@@ -387,14 +307,6 @@ export const FourSetsDiagram = ({
           strokeWidth="2px"
           onClick={event => onClick({ number, event })}
         />
-        <UnselectableText
-          x={290}
-          y={400}
-          fill={selected.includes(number) ? "white" : color}
-          onClick={event => onClick({ number, event })}
-        >
-         {number}
-        </UnselectableText>
       </g>
     )),
     getElementalSet(0, number => (
@@ -419,14 +331,6 @@ export const FourSetsDiagram = ({
           strokeWidth="2px"
           onClick={event => onClick({ number, event })}
         />
-        <UnselectableText
-          x={30}
-          y={30}
-          fill={selected.includes(number) ? "white" : color}
-          onClick={event => onClick({ number, event })}
-        >
-         {number}
-        </UnselectableText>
       </g>
     )),
   ]

@@ -52,7 +52,7 @@ export const TwoSetsDiagram = ({
           {...circles[0]}
           fill={selected.includes(number) ? "white" : color}
         >
-         {number}
+         A
         </UnselectableText>
       </g>
     )),
@@ -76,7 +76,7 @@ export const TwoSetsDiagram = ({
           {...circles[1]}
           fill={selected.includes(number) ? "white" : color}
         >
-         {number}
+         B
         </UnselectableText>
       </g>
     )),
@@ -95,13 +95,6 @@ export const TwoSetsDiagram = ({
           strokeWidth="2"
           onClick={event => onClick({ number, event })}
         />
-        <UnselectableText
-          x={intersect[0]}
-          y={intersect[2] + (intersect[3] - intersect[2]) / 2}
-          fill={selected.includes(number) ? "white" : color}
-        >
-         {number}
-        </UnselectableText>
       </g>
     )),
     getElementalSet(0, number => (
@@ -126,13 +119,6 @@ export const TwoSetsDiagram = ({
           strokeWidth="2"
           onClick={event => onClick({ number, event })}
         />
-        <UnselectableText
-          x={30}
-          y={30}
-          fill={selected.includes(number) ? "white" : color}
-        >
-         {number}
-        </UnselectableText>
       </g>
     )),
   ]
