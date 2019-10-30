@@ -1,7 +1,8 @@
+
 <!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
 <p align="center">
   <a href="https://www.th-brandenburg.de">
-    <img alt="THB" src="https://www.th-brandenburg.de/typo3conf/ext/sb_config7/Resources/Public/Icons/THB_Logo.svg" width="60" />
+    <img alt="THB" src="https://www.th-brandenburg.de/typo3conf/ext/sb_config7/Resources/Public/Icons/THB_Logo.svg"/>
   </a>
 </p>
 
@@ -29,6 +30,7 @@ If you like to contribute or found a bug please don't be shy and check out the [
 - [Credits](#credits)
 - [Contributing](#contributing)
   - [Todo](#todo)
+  - [Pull Requests](#pull-requests)
 - [License](#license)
 
 ## Security
@@ -38,7 +40,7 @@ Anything you do with this tool only is available as long as you keep your browse
 
 ## Background
 
-This tool is developed using [Gatsby.js](https://gatsbyjs.org) which itself relies on [React.js](https://reactjs.org).
+This tool is developed using [Gatsby.js](https://gatsbyjs.org) which itself relies on [React.js](https://reactjs.org). The deployment is handled by [Netlify](https://netlify.com) and the CI by [TravisCI](https://travis-ci.org).
 
 ## Install
 
@@ -53,34 +55,40 @@ Then start the executable named `venn-diagram` on Linux / OS X or `venn-diagram.
 
 1. **Adjust the settings as you please**
 
+  ![Settings](docs/settings.png)
+
   Select the number of sets you want to work with.
 
   Choose a color for the diagram or stay with the default.
 
 2. **Start playing by:**
 
-  a. **Trying out set operations**
+	  1. **Trying out set operations**
 
-    Use the virtual keyboard to enter operations.
-    This prevents errors on input.
-    Then click the `< enter` key on the keyboard or press `Evaluate`.
+	   ![Try-Hard](docs/try-hard.png)
 
-  b. **Generating set operations based on the diagram**
+		 Use the virtual keyboard to enter operations.
+		 This prevents errors on input.
+		 Then click the `< enter` key on the keyboard or press `Evaluate`.
 
-    Click some sets in the diagram.
-    Then hit the `Generate` button.
+	  2. **Generating set operations based on the diagram**
+
+	   ![Generate](docs/generate.png)
+
+		 Click some sets in the diagram.
+		 Then hit the `Generate` button.
 
 ## Maintainers
 
-- [@Jan Vandenhouten](vandenho@th-brandenburg.de)
+- [@Jan Vandenhouten](mailto:vandenho@th-brandenburg.de)
 
-- [@Fabian Loewe](fabianl@th-brandenburg.de)
+- [@Fabian Loewe](mailto:fabianl@th-brandenburg.de)
 
 ## Credits
 
 See the [contributers file](CONTRIBUTERS.md).
 
-Special thanks go to [Gatsby.js](https://gatsbyjs.org) and [React.js](https://reactjs.org) for providing such great tools and
+Special thanks go to all developers of our used dependencies and tools and to
 our [university](https://www.th-brandenburg.de/) for the idea and support for creating this tool.
 
 ## Contributing
@@ -107,11 +115,6 @@ the conventional JavaScript code style.
 Pull Requests are happily accepted but use this [template](PULL_REQUEST_TEMPLATE.md). Otherwise it will be rejected.
 
 Don't forget to add yourself to the [contributers file](CONTRIBUTERS.md)!
-
-```
-
-
-```
 
 > Small note: If editing the Readme, please conform to the [standard-readme](https://github.com/RichardLitt/standard-readme) specification.
 
