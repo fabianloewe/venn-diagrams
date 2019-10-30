@@ -65,18 +65,20 @@ Then start the executable named `venn-diagram` on Linux / OS X or `venn-diagram.
 
 	  1. **Trying out set operations**
 
-	   ![Try-Hard](docs/try-hard.png)
+	     ![Try-Hard](docs/try-hard.png)
 
-		 Use the virtual keyboard to enter operations.
-		 This prevents errors on input.
-		 Then click the `< enter` key on the keyboard or press `Evaluate`.
+	     Use the virtual keyboard to enter operations.
+	     This prevents errors on input.
+         
+	     Then click the `< enter` key on the keyboard or press `Evaluate`.
 
 	  2. **Generating set operations based on the diagram**
 
-	   ![Generate](docs/generate.png)
+	     ![Generate](docs/generate.png)
 
-		 Click some sets in the diagram.
-		 Then hit the `Generate` button.
+	     Click some sets in the diagram.
+         
+	     Then hit the `Generate` button.
 
 ## Maintainers
 
