@@ -10,7 +10,7 @@
     "babel-plugin-styled-components": "^1.10.6",
     "d3-shape": "latest",
     "detect-browser-language": "^0.0.2",
-    "gatsby": "^2.13.20",
+    "gatsby": "^4.25.7",
     "gatsby-image": "^2.2.6",
     "gatsby-plugin-flow": "^1.1.7",
     "gatsby-plugin-i18n": "^1.0.1",
