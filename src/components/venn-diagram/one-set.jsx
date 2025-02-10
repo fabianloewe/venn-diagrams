@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Group } from "@vx/group";
+import { Group } from "@visx/group";
 import { CirclePath, RevertedCirclePath } from "./circle-path"
 
 const getElementalSet = (n, func) => [n, func(n)]

@@ -10,7 +10,7 @@
 export default class Set {
 	set: number[];
 
-	constructor(set: ?number[]) {
+	constructor(set?: number[]) {
 		this.set = set ? set : [];
 	}
 

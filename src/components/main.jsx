@@ -1,5 +1,4 @@
 import React from "react";
-import { graphql } from "gatsby";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import GridLayout  from "react-grid-layout";
@@ -14,13 +13,13 @@ import 'react-accessible-accordion/dist/fancy-example.css';
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { BrowserView, MobileView } from "react-device-detect";
-import Layout from "../components/layout";
-import SEO from "../components/seo";
-import VennDiagram from "../components/venn-diagram";
-import OpInput from "../components/op-input";
-import SettingsItem from "../components/settings-item";
-import TryhardItem from "../components/tryhard-item";
-import GeneratorItem from "../components/generator-item";
+import Layout from "./layout";
+import SEO from "./seo";
+import VennDiagram from "./venn-diagram";
+import OpInput from "./op-input";
+import SettingsItem from "./settings-item";
+import TryhardItem from "./tryhard-item";
+import GeneratorItem from "./generator-item";
 import { VDInputReader, Set as VDSet, VDInputGenerator } from "../calc";
 
 const layoutOps = "⋂ ⋃ ∖ ¬ {enter}";
@@ -54,10 +53,10 @@ const InputContainer = styled.div`
   //border-radius: 5px;
 `;
 
-toast.configure({
+const toastConfig = {
   autoClose: 10000,
-  draggable: true,
-})
+  draggable: true
+}
 
 class Main extends React.Component {
   state = {
@@ -104,7 +103,7 @@ class Main extends React.Component {
         selected: inputReader.readInput(input).getSet(),
       };
     } catch (e) {
-      toast.error(e.toString());
+      toast.error(e.toString(), toastConfig);
       console.error(e);
     }
   })
@@ -124,7 +123,7 @@ class Main extends React.Component {
         setsOpGen: result,
       });
     } catch (e) {
-      toast.error(e.toString());
+      toast.error(e.toString(), toastConfig);
       console.error(e);
     }
   }
@@ -137,9 +136,7 @@ class Main extends React.Component {
   }
 
   renderToolbar() {
-    const [
-      { settingsItem, tryHardItem, generatorItem }
-    ] = this.props.data.allLangsYaml.nodes;
+    const { settingsItem, tryHardItem, generatorItem }= this.props.data;
     const { numSetsText, setsOp, selected, setsOpGen, color, numSets } = this.state;
     return (
       <Accordion
@@ -218,7 +215,7 @@ class Main extends React.Component {
   }
 
   render() {
-    const [{ disclaimer }] = this.props.data.allLangsYaml.nodes;
+    const { disclaimer } = this.props.data;
     const { numSets, numSetsText, setsOp, selected, setsOpGen, color } = this.state;
     const layout = [
       { i: "left", x: 0, y: 0, w: 1, h: 1, static: true },
@@ -258,34 +255,28 @@ export default Main
 
 Main.propTypes = {
   data: PropTypes.shape({
-    allLangsYaml: PropTypes.shape({
-      nodes: PropTypes.arrayOf(
-        PropTypes.shape({
-          disclaimer: PropTypes.string.isRequired,
-          generatorItem: PropTypes.shape({
-            button: PropTypes.string.isRequired,
-            menu: PropTypes.shape({
-              gen: PropTypes.string,
-              reset: PropTypes.string,
-            }).isRequired,
-          }),
-          settingsItem: PropTypes.shape({
-            button: PropTypes.string.isRequired,
-            menu: PropTypes.shape({
-              color: PropTypes.string,
-              numOfSets: PropTypes.string,
-            }).isRequired,
-          }),
-          tryHardItem: PropTypes.shape({
-            button: PropTypes.string.isRequired,
-            menu: PropTypes.shape({
-              input: PropTypes.string,
-              eval: PropTypes.string,
-              reset: PropTypes.string,
-            }).isRequired,
-          }),
-        })
-      ),
-    })
+    disclaimer: PropTypes.string.isRequired,
+    generatorItem: PropTypes.shape({
+      button: PropTypes.string.isRequired,
+      menu: PropTypes.shape({
+        gen: PropTypes.string,
+        reset: PropTypes.string,
+      }).isRequired,
+    }),
+    settingsItem: PropTypes.shape({
+      button: PropTypes.string.isRequired,
+      menu: PropTypes.shape({
+        color: PropTypes.string,
+        numOfSets: PropTypes.string,
+      }).isRequired,
+    }),
+    tryHardItem: PropTypes.shape({
+      button: PropTypes.string.isRequired,
+      menu: PropTypes.shape({
+        input: PropTypes.string,
+        eval: PropTypes.string,
+        reset: PropTypes.string,
+      }).isRequired,
+    }),
   }),
 };

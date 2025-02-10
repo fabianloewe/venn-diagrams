@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import { Group } from "@vx/group";
-import { Line, Circle } from "@vx/shape";
+import { Group } from "@visx/group";
+import { Line, Circle } from "@visx/shape";
 
 const Raster = ({ width, height, distance = 25 }) => {
   const yAxes = [];

@@ -32,6 +32,8 @@ export default class VDInputReader {
     this.vd = new VennDiagram(numberOfSets)
     this.helpSets = new Map()
     this.negatedSets = new Map()
+    this.markedAreas = new Set(new Array(0))
+    this.helpSetCount = 0
   }
 
   /**

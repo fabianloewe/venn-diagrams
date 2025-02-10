@@ -70,11 +70,11 @@ export default class MultiIndexIterator implements Iterable<Array<number>> {
   // $FlowFixMe
   [Symbol.iterator](): Iterator<number[]> {
     return {
-      next: () => {
+      next: () : IteratorResult<number[]> => {
         if (this.hasNext()) {
           return { value: this.next(), done: false };
         } else {
-          return { done: true };
+          return { value: undefined, done: true };
         }
       }
     };

@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Group } from "@vx/group";
-import { Circle, getPoints } from "@vx/shape";
+import { Group } from "@visx/group";
+import { Circle, getPoints } from "@visx/shape";
 import styled from "styled-components";
 
 const alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";

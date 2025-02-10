@@ -1,4 +1,3 @@
-import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import React from "react"
 import styled from "styled-components"
@@ -26,9 +25,7 @@ const Footer = () => (
   <footer>
     <Phantom />
     <Container>
-      © {new Date().getFullYear()}, Built with
-      {` `}
-      <a href="https://www.gatsbyjs.org">Gatsby</a>
+      © {new Date().getFullYear()}, Built
       {` `}
       by Fabian Loewe and Jan Vandenhouten @
       {` `}

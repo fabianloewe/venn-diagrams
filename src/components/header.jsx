@@ -1,4 +1,3 @@
-import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import React from "react"
 
@@ -20,38 +19,38 @@ const Header = ({ siteTitle }) => (
       }}
     >
       <h1 style={{ margin: 0 }}>
-        <Link
-          to="/"
+        <a
+          href="/"
           style={{
             color: `white`,
             textDecoration: `none`,
           }}
         >
           {siteTitle}
-        </Link>
+        </a>
       </h1>
       <div style={{ display: "inline" }}>
         <span style={{ paddingRight: "10px" }}>
-          <Link
-            to="/en/"
+          <a
+            href="/en/"
             style={{
               color: `white`,
               textDecoration: `none`,
             }}
           >
             EN
-          </Link>
+          </a>
         </span>
         <span>
-          <Link
-            to="/de/"
+          <a
+            href="/de/"
             style={{
               color: `white`,
               textDecoration: `none`,
             }}
           >
             DE
-          </Link>
+          </a>
         </span>
       </div>
     </div>

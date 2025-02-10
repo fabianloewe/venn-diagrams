@@ -3,7 +3,6 @@
  *
  */
 
-import Set from "./Set";
 import VDInputReader from "./VDInputReader";
 import VDInputGenerator from "./VDInputGenerator";
 
@@ -33,4 +32,4 @@ export default class VDTester {
 	}
 }
 
-VDTester.main(process.argv.slice(2));
+//VDTester.main(process.argv.slice(2));

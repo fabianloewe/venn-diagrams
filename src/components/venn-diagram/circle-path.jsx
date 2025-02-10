@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import PropTypes from "prop-types";
-import { Group } from "@vx/group";
+import { Group } from "@visx/group";
 import { arc, line, curveCatmullRom } from "d3-shape";
 import styled from "styled-components";
 import intersection from "../../utils/intersection";

@@ -7,14 +7,15 @@ import Set from "./Set";
  */
 export default class VennDiagram {
 	numberOfSets: number;
-	allSets: ?Set[];
-	omega: ?Set;
-	a: ?Set;
-	b: ?Set;
-	c: ?Set;
-	d: ?Set;
+	allSets?: Set[];
+	omega?: Set;
+	a?: Set;
+	b?: Set;
+	c?: Set;
+	d?: Set;
 
 	constructor(numberOfSets: number) {
+		this.numberOfSets = numberOfSets;
 		this.setNumberOfSets(numberOfSets);
 		this.setAmounts(numberOfSets);
 	}
@@ -55,12 +56,12 @@ export default class VennDiagram {
 	}
 
 	setArraysToNull(): void {
-		this.omega = null;
-		this.a = null;
-		this.b = null;
-		this.c = null;
-		this.d = null;
-		this.allSets = null;
+		this.omega = undefined;
+		this.a = undefined;
+		this.b = undefined;
+		this.c = undefined;
+		this.d = undefined;
+		this.allSets = undefined;
 	}
 
 	getNumberOfSets(): number {

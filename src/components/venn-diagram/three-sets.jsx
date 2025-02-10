@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Group } from "@vx/group";
-import { getPoints } from "@vx/shape";
+import { Group } from "@visx/group";
+import { getPoints } from "@visx/shape";
 import { UnselectableText, RevertedCirclePath } from "./circle-path";
 import intersection from "../../utils/intersection";
 
