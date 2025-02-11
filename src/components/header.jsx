@@ -37,14 +37,7 @@ const Header = ({ siteTitle }) => {
           <span style={{ paddingRight: "10px" }}>
             <button
               onClick={setLangEN}
-              style={{
-                marginRight: "10px",
-                background: "transparent",
-                border: "1px solid white",
-                color: "white",
-                padding: "5px 10px",
-                cursor: "pointer",
-              }}
+              className={"lang-button"}
             >
               EN
             </button>
@@ -52,16 +45,10 @@ const Header = ({ siteTitle }) => {
           <span>
             <button
               onClick={setLangDE}
-              style={{
-                background: "transparent",
-                border: "1px solid white",
-                color: "white",
-                padding: "5px 10px",
-                cursor: "pointer",
-              }}
+              className={"lang-button"}
             >
-            DE
-          </button>
+              DE
+            </button>
           </span>
         </div>
       </div>
