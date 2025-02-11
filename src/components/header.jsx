@@ -1,61 +1,73 @@
 import PropTypes from "prop-types"
 import React from "react"
+import { useLanguage } from "./language-context"
 
-const Header = ({ siteTitle }) => (
-  <header
-    style={{
-      background: `blue`,
-      marginBottom: `1.45rem`,
-    }}
-  >
-    <div
+const Header = ({ siteTitle }) => {
+  const { setLangEN, setLangDE } = useLanguage()
+
+  return (
+    <header
       style={{
-        display: `flex`,
-        alignItems: `baseline`,
-         justifyContent: `space-between`,
-        margin: `0 auto`,
-        maxWidth: 960,
-        padding: `1.45rem 1.0875rem`,
+        background: `blue`,
+        marginBottom: `1.45rem`,
       }}
     >
-      <h1 style={{ margin: 0 }}>
-        <a
-          href="/"
-          style={{
-            color: `white`,
-            textDecoration: `none`,
-          }}
-        >
-          {siteTitle}
-        </a>
-      </h1>
-      <div style={{ display: "inline" }}>
-        <span style={{ paddingRight: "10px" }}>
+      <div
+        style={{
+          display: `flex`,
+          alignItems: `baseline`,
+          justifyContent: `space-between`,
+          margin: `0 auto`,
+          maxWidth: 960,
+          padding: `1.45rem 1.0875rem`,
+        }}
+      >
+        <h1 style={{ margin: 0 }}>
           <a
-            href="/en/"
+            href="/"
             style={{
               color: `white`,
               textDecoration: `none`,
             }}
           >
-            EN
+            {siteTitle}
           </a>
-        </span>
-        <span>
-          <a
-            href="/de/"
-            style={{
-              color: `white`,
-              textDecoration: `none`,
-            }}
-          >
+        </h1>
+        <div style={{ display: "inline" }}>
+          <span style={{ paddingRight: "10px" }}>
+            <button
+              onClick={setLangEN}
+              style={{
+                marginRight: "10px",
+                background: "transparent",
+                border: "1px solid white",
+                color: "white",
+                padding: "5px 10px",
+                cursor: "pointer",
+              }}
+            >
+              EN
+            </button>
+          </span>
+          <span>
+            <button
+              onClick={setLangDE}
+              style={{
+                background: "transparent",
+                border: "1px solid white",
+                color: "white",
+                padding: "5px 10px",
+                cursor: "pointer",
+              }}
+            >
             DE
-          </a>
-        </span>
+          </button>
+          </span>
+        </div>
       </div>
-    </div>
-  </header>
-)
+    </header>
+  )
+}
 
 Header.propTypes = {
   siteTitle: PropTypes.string,
