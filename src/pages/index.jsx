@@ -1,24 +1,17 @@
-import React, { StrictMode, useEffect } from "react"
+import React, { StrictMode } from "react"
 import { createRoot } from "react-dom/client"
 import Main from "../components/main"
-//import labelsDE from "../langs/de.yaml"
+import { LanguageProvider, useLanguage } from "../components/language-context"
 
-/**
- * Simply redirects the user to the translated page
- */
 function IndexPage() {
-  const [labels, setLabels] = React.useState(null)
-  useEffect(() => {
-    const lang = navigator.language || navigator.userLanguage
-    if (lang.includes("de")) import("../langs/de.yaml").then(it => setLabels(it.default))
-    else import("../langs/en.yaml").then(it => setLabels(it.default))
-  }, [])
-  console.log(labels)
-  return labels !== null ? <Main data={labels} /> : null
+  const { labels } = useLanguage()
+  return <Main data={labels} />
 }
 
-createRoot(document.getElementById('root')).render(
+createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <IndexPage />
+    <LanguageProvider>
+      <IndexPage />
+    </LanguageProvider>
   </StrictMode>,
 )
