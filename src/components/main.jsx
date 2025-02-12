@@ -170,7 +170,7 @@ class Main extends React.Component {
           <AccordionItemPanel>
             <TryhardItem
               container={InputContainer}
-              layout={numSets ? layouts[numSets - 1] : []}
+              layout={layouts[numSets - 1]}
               value={setsOp}
               onChange={this.handleSetsOpChange}
               onEvaluate={this.handleSetsOpEval}
