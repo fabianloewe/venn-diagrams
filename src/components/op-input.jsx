@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
-import ReactDOM from "react-dom";
-import PropTypes from "prop-types";
-import "simple-keyboard/build/css/index.css";
+import React, { useState, useEffect } from "react"
+import ReactDOM from "react-dom"
+import PropTypes from "prop-types"
+import "simple-keyboard/build/css/index.css"
 
 export const OpInput = ({
   className,
@@ -11,40 +11,52 @@ export const OpInput = ({
   onKeyPress,
   texts,
 }) => {
-  const [keyboard, setKeyboard] = useState(null);
+  const [keyboard, setKeyboard] = useState(null)
 
   const layoutRegExp = layout
-    .map(row => row
-      .replace(/\s|{.*}/g, "")
-      .replace(/\(\)/g, "\\(\\)")
-    )
-    .join("");
-  const inputPattern = new RegExp(`\\s|[${layoutRegExp}]`, "g");
+    .map((row) => row.replace(/\s|{.*}/g, "").replace(/\(\)/g, "\\(\\)"))
+    .join("")
+  const inputPattern = new RegExp(`\\s|[${layoutRegExp}]`, "g")
   console.log(inputPattern)
 
-  const onChangeInput = event => {
-    const input = event.target.value;
-    const matchResult = input.match(inputPattern);
-    if (matchResult !== null && matchResult.join("") !== input) return;
-    onChange(input);
-    keyboard.setInput(input);
-  };
+  const onChangeInput = (event) => {
+    const input = event.target.value
+    const matchResult = input.match(inputPattern)
+    if (matchResult !== null && matchResult.join("") !== input) return
+    onChange(input)
+    keyboard.setInput(input)
+  }
 
   useEffect(() => {
+    let newKeyboard
+
     if (window) {
-      import("simple-keyboard").then(KeyboardClass => {
+      import("simple-keyboard").then((KeyboardClass) => {
         const Keyboard = KeyboardClass.default
 
-        const keyboard = new Keyboard({
-          onChange,
-          onKeyPress,
-          layout: { "default": layout},
-        });
-        keyboard.setInput(value);
-        setKeyboard(keyboard);
-      });
+        setKeyboard(prevKeyboard => {
+          if (prevKeyboard) {
+            prevKeyboard.destroy();
+          }
+
+          newKeyboard = new Keyboard({
+            onChange,
+            onKeyPress,
+            layout: { default: layout },
+          })
+
+          newKeyboard.setInput(value)
+          return newKeyboard;
+        })
+      })
     }
-  }, [layout]);
+
+    return () => {
+      if (newKeyboard) {
+        newKeyboard.destroy();
+      }
+    };
+  }, [layout])
 
   return (
     <div className={className}>
@@ -59,8 +71,8 @@ export const OpInput = ({
       />
       <div className="simple-keyboard" />
     </div>
-  );
-};
+  )
+}
 
 OpInput.propTypes = {
   className: PropTypes.string,
@@ -70,7 +82,7 @@ OpInput.propTypes = {
   onKeyPress: PropTypes.func,
   texts: PropTypes.shape({
     input: PropTypes.string,
-  })
-};
+  }),
+}
 
-export default OpInput;
+export default OpInput
