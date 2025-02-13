@@ -2,7 +2,7 @@
   "name": "venn-diagrams",
   "private": true,
   "description": "This tool visualizes set operations",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "author": "Fabian Loewe <fabianl@th-brandenburg.de>, Jan Vandenhouten <vandenho@th-brandenburg.de>",
   "dependencies": {
     "@visx/group": "^3.12.0",
