@@ -225,7 +225,7 @@ class Main extends React.Component {
       <Layout>
         <SEO title="Venn Diagram" />
         {/*<h1>The Venn diagram tool</h1>*/}
-        <p>{disclaimer}</p>
+        {/*<p>{disclaimer}</p>*/}
         <BrowserView>
           <GridLayout
             className="layout"
