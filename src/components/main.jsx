@@ -170,7 +170,7 @@ class Main extends React.Component {
           <AccordionItemPanel>
             <TryhardItem
               container={InputContainer}
-              layout={numSets ? layouts[numSets - 1] : []}
+              layout={layouts[numSets - 1]}
               value={setsOp}
               onChange={this.handleSetsOpChange}
               onEvaluate={this.handleSetsOpEval}
@@ -225,7 +225,7 @@ class Main extends React.Component {
       <Layout>
         <SEO title="Venn Diagram" />
         {/*<h1>The Venn diagram tool</h1>*/}
-        <p>{disclaimer}</p>
+        {/*<p>{disclaimer}</p>*/}
         <BrowserView>
           <GridLayout
             className="layout"
