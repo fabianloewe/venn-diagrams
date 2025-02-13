@@ -1,6 +1,6 @@
-import React from "react";
+import React from "react"
 
-const GeneratorItem = props => (
+const GeneratorItem = (props) => (
   <>
     <props.container>
       <input
@@ -27,6 +27,6 @@ const GeneratorItem = props => (
       />
     </props.container>
   </>
-);
+)
 
-export default GeneratorItem;
+export default GeneratorItem

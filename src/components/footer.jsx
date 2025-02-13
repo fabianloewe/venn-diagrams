@@ -7,11 +7,11 @@ const Phantom = styled.div`
   padding: 20px;
   height: 60px;
   width: 100%;
-`;
+`
 
 const Container = styled.div`
-  background-color: #F8F8F8;
-  border-top: 1px solid #E7E7E7;
+  background-color: #f8f8f8;
+  border-top: 1px solid #e7e7e7;
   text-align: center;
   padding: 20px;
   position: fixed;
@@ -19,7 +19,7 @@ const Container = styled.div`
   bottom: 0;
   height: 60px;
   width: 100%;
-`;
+`
 
 const Footer = () => (
   <footer>
@@ -27,8 +27,7 @@ const Footer = () => (
     <Container>
       © {new Date().getFullYear()}, Built
       {` `}
-      by Fabian Loewe and Jan Vandenhouten @
-      {` `}
+      by Fabian Loewe and Jan Vandenhouten @{` `}
       <a href="https://th-brandenburg.de">
         University of Applied Science Brandenburg
       </a>
@@ -36,4 +35,4 @@ const Footer = () => (
   </footer>
 )
 
-export default Footer;
+export default Footer

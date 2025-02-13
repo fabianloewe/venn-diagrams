@@ -34,9 +34,9 @@ export const OpInput = ({
       import("simple-keyboard").then((KeyboardClass) => {
         const Keyboard = KeyboardClass.default
 
-        setKeyboard(prevKeyboard => {
+        setKeyboard((prevKeyboard) => {
           if (prevKeyboard) {
-            prevKeyboard.destroy();
+            prevKeyboard.destroy()
           }
 
           newKeyboard = new Keyboard({
@@ -46,16 +46,16 @@ export const OpInput = ({
           })
 
           newKeyboard.setInput(value)
-          return newKeyboard;
+          return newKeyboard
         })
       })
     }
 
     return () => {
       if (newKeyboard) {
-        newKeyboard.destroy();
+        newKeyboard.destroy()
       }
-    };
+    }
   }, [layout])
 
   return (

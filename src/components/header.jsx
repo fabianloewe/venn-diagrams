@@ -35,18 +35,12 @@ const Header = ({ siteTitle }) => {
         </h1>
         <div style={{ display: "inline" }}>
           <span style={{ paddingRight: "10px" }}>
-            <button
-              onClick={setLangEN}
-              className={"lang-button"}
-            >
+            <button onClick={setLangEN} className={"lang-button"}>
               EN
             </button>
           </span>
           <span>
-            <button
-              onClick={setLangDE}
-              className={"lang-button"}
-            >
+            <button onClick={setLangDE} className={"lang-button"}>
               DE
             </button>
           </span>

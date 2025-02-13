@@ -4,12 +4,12 @@ const LanguageContext = createContext()
 
 export const LanguageProvider = ({ children }) => {
   const [lang, setLang] = useState(
-    JSON.parse(localStorage.getItem("lang")) || "en",
+    JSON.parse(localStorage.getItem("lang")) || "en"
   )
   const [labels, setLabels] = useState(null)
 
   const loadLabels = (language) => {
-    import(`../langs/${language}.yaml`).then(it => setLabels(it.default))
+    import(`../langs/${language}.yaml`).then((it) => setLabels(it.default))
   }
 
   const setLangEN = () => {

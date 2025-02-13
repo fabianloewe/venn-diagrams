@@ -13,5 +13,5 @@ createRoot(document.getElementById("root")).render(
     <LanguageProvider>
       <IndexPage />
     </LanguageProvider>
-  </StrictMode>,
+  </StrictMode>
 )

@@ -1,7 +1,7 @@
-import React from "react";
-import { SliderPicker } from "react-color";
+import React from "react"
+import { SliderPicker } from "react-color"
 
-const SettingsItem = props => (
+const SettingsItem = (props) => (
   <>
     <props.container>
       <label htmlFor="num-sets">{props.texts.numOfSets}: </label>
@@ -23,6 +23,6 @@ const SettingsItem = props => (
       />
     </props.container>
   </>
-);
+)
 
-export default SettingsItem;
+export default SettingsItem
