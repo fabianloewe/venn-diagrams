@@ -23,7 +23,6 @@ If you like to contribute or found a bug please don't be shy and check out the [
 ## Table of Contents
 
 - [Security](#security)
-- [Background](#background)
 - [Install](#install)
 - [Usage](#usage)
 - [Maintainers](#maintainers)
@@ -38,18 +37,9 @@ If you like to contribute or found a bug please don't be shy and check out the [
 There is no data collected wether you use the online or offline version.
 Anything you do with this tool only is available as long as you keep your browser or the app open. A refresh resets the site to its initial state.
 
-## Background
-
-This tool is developed using [Gatsby.js](https://gatsbyjs.org) which itself relies on [React.js](https://reactjs.org). The deployment is handled by [Netlify](https://netlify.com) and the CI by [TravisCI](https://travis-ci.org).
-
 ## Install
 
-Installation is usually not necessary. Just use the [online version](https://relaxed-mestorf-4d590f.netlify.com/).
-
-If you require an offline version, download the provided archive for your operating system and
-unzip it to a desired location.
-
-Then start the executable named `venn-diagram` on Linux / OS X or `venn-diagram.exe` on Windows.
+Installation is usually not necessary. Just use the [online version](https://venndiagrams.ixitos.com).
 
 ## Usage
 
